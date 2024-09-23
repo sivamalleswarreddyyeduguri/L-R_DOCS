@@ -1,0 +1,98 @@
+using following backend services in IBM verify APIs -
+
+ 
+
+1. POST "http://cust-acct-qry-svc.biz-customer-dev.svc.cluster.local:8080/customer/api/v1/custInqByMob/";
+
+
+reqBody = {
+"mobNum": "" + mobile
+}
+
+
+
+2. POST "http://aadhaar-ekyc-service.proxy-aadhaar-dev.svc.cluster.local:8080/api/v1/aadhaar/generateOtp";
+
+
+reqBody = {
+"vid": "" + userAadharNumber,
+"consent": "Y",
+"communicationId": "test"
+
+}
+
+
+
+3.POST "http://atm-switch-service.biz-common-uat.svc.cluster.local:8080/proxy/v1/atmswitch/verifyCard";
+
+
+reqBody = {
+"transRefNum": "" + transRefNum, 
+"cardNum": "" + cardNum,
+"cardExpiry": "" + cardExpiry,
+"pin": "" + pin
+}
+
+
+
+4. GET "http://cust-acct-qry-svc.biz-customer-dev.svc.cluster.local:8080/customer/api/v1/getCustomerByCIF/" + cif;
+
+
+
+5. POST "http://email-cmd-svc.biz-common-dev.svc.cluster.local:8080/api/v1/email/send";
+
+
+reqBody = {
+"body": "" + mailBody,
+"cc": "",
+"correlationId": "",
+"subject": "" + subject,
+"to": "" + mail,
+"transRefNumber": ""
+}
+
+
+6. POST "http://sms-command-service.biz-common-dev.svc.cluster.local:8080/api/v1/sms/send";
+
+
+ reqBody = {
+"refNumber": refNumber,
+"mobileNumber": "" + mobile,
+"message": "" + smstext,
+"intl": "0",
+"smsType": "SMS",
+"templateId": "" + smstemplateId
+}
+
+
+7. POST "http://aadhaar-ekyc-service.proxy-aadhaar-dev.svc.cluster.local:8080/api/v1/aadhaar/validateOtp";
+
+
+reqBody = {
+"otp": "" + aadharOtp,
+"uid": "" + aadharNumber,
+"rc": "Y",
+"txn": "UKC:" + txn,
+"communicationId": "" + communicationId
+}
+
+
+
+8. POST "http://aadhaar-ekyc-service.proxy-aadhaar-dev.svc.cluster.local:8080/api/v1/aadhaar/validateBio";
+
+
+reqBody = {
+"uid": "" + uid,
+"bt": "" + bt,
+"rdsId": "" + rdsId,
+"rdsVer": "" + rdsVer,
+"dpId": "" + dpId,
+"dc": "" + dc,
+"mi": "" + mi,
+"mc": "" + mc,
+"communicationId": "" + communicationId,
+"consent": "" + consent,
+"dih": "" + dih,
+"bio": "" + bio
+}
+

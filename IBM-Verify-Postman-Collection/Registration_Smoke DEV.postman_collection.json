@@ -1,0 +1,1135 @@
+{
+	"info": {
+		"_postman_id": "f6babcc0-39a7-44cc-9e95-43734c32d60d",
+		"name": "Registration_Smoke DEV",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "30880854",
+		"_collection_link": "https://winter-trinity-37291.postman.co/workspace/RegistrationAPI~256ea29a-41d7-4767-81a5-18d123151a37/collection/30880854-f6babcc0-39a7-44cc-9e95-43734c32d60d?action=share&source=collection_link&creator=30880854"
+	},
+	"item": [
+		{
+			"name": "checkmbregistrationwithdeviceid_v1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"CHECKMBREGISTRATIONWITHDEVICEID: \", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "dbp-id",
+						"value": "{{dbp-id}}",
+						"type": "text"
+					},
+					{
+						"key": "dbp-secret",
+						"value": "{{dbp-secret}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"deviceid\": \"{{device_id}}\",\r\n  \"simdata\": \"{{sim_data}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}{{basePath}}/checkmbregistrationwithdeviceid_v1"
+			},
+			"response": []
+		},
+		{
+			"name": "mbsilentsmsupdatestatus",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"CHECKMBREGISTRATION: \", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "dbp-id",
+						"value": "{{dbp-id}}",
+						"type": "text"
+					},
+					{
+						"key": "dbp-secret",
+						"value": "{{dbp-secret}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"city\": \"{{city}}\",\r\n  \"leadDateTime\": \"{{leadDateTime}}\",\r\n  \"mobile\": \"9289820889\",\r\n  \"smstext\": \"DBMRGT U2FsdGVkX1/xwZbGDLpUmEulJzch6eFoxlnYiyNiSqB9G8QXkIa2EgABxegw4lXRBV9uFdbPWR2bMTdhRcjtNQ==\",\r\n  \"sourceoperator\": \"{{sourceoperator}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}{{basePath}}/mbsilentsmsupdatestatus"
+			},
+			"response": []
+		},
+		{
+			"name": "mbsilentsmsgetstatus",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"CHECKMBREGISTRATION: \", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "dbp-id",
+						"value": "{{dbp-id}}",
+						"type": "text"
+					},
+					{
+						"key": "dbp-secret",
+						"value": "{{dbp-secret}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"deviceid\": \"84183225a98f55c6\",\r\n  \"simdata\": \"84183225a98f55c601|0|1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}{{basePath}}/mbsilentsmsgetstatus"
+			},
+			"response": []
+		},
+		{
+			"name": "custInqByMob",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "dbp-id",
+						"value": "{{dbp-id}}",
+						"type": "text"
+					},
+					{
+						"key": "dbp-secret",
+						"value": "{{dbp-secret}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"mobileNumber\":\"9326891247\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/mpgw/app/customer/api/v1/custInqByMob"
+			},
+			"response": []
+		},
+		{
+			"name": "mbregistration",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Fixed syntax",
+							"pm.test(\"MBREGISTRATION:\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var device_id = pm.variables.replaceIn(\"{{$randomUUID}}\");\r",
+							"var mobile = pm.variables.replaceIn(\"{{$timestamp}}\");\r",
+							"var cif = pm.variables.replaceIn(\"{{$timestamp}}\");\r",
+							"var simData = pm.variables.replaceIn(\"{{$randomUUID}}\"+\"|0|1\");\r",
+							"\r",
+							"pm.collectionVariables.set(\"device_id\", device_id);\r",
+							"pm.collectionVariables.set(\"mobile\", mobile);\r",
+							"pm.collectionVariables.set(\"cif\", cif);\r",
+							"pm.collectionVariables.set(\"sim_data\", simData);\r",
+							"console.log(\"cif:\", cif)"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "dbp-id",
+						"value": "{{dbp-id}}",
+						"type": "text"
+					},
+					{
+						"key": "dbp-secret",
+						"value": "{{dbp-secret}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"deviceid\": \"{{device_id}}\",\r\n  \"mobile\": \"7686668877\",\r\n  \"cif\": \"7667678\",\r\n  \"simdata\": \"{{sim_data}}\",\r\n  \"mail\":\"{{mail}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}{{basePath}}/mbregistration"
+			},
+			"response": []
+		},
+		{
+			"name": "checkmbregistration",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"CHECKMBREGISTRATION: \", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "dbp-id",
+						"value": "{{dbp-id}}",
+						"type": "text"
+					},
+					{
+						"key": "dbp-secret",
+						"value": "{{dbp-secret}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"deviceid\": \"84183225a98f55c6\",\r\n  \"mobile\": \"7304675947\",\r\n  \"simdata\": \"84183225a98f55c601|0|1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}{{basePath}}/checkmbregistration"
+			},
+			"response": []
+		},
+		{
+			"name": "generateaadharotp",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"GENERATEAADHAROTP: \", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "dbp-id",
+						"value": "{{dbp-id}}",
+						"type": "text"
+					},
+					{
+						"key": "dbp-secret",
+						"value": "{{dbp-secret}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"cif\": \"634743268\",\r\n  \"aadharnumber\": \"480636610121\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}{{basePath}}/generateaadharotp"
+			},
+			"response": []
+		},
+		{
+			"name": "verifyaadharotp",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"VERIFYAADHAROTP: \", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "dbp-id",
+						"value": "{{dbp-id}}",
+						"type": "text"
+					},
+					{
+						"key": "dbp-secret",
+						"value": "{{dbp-secret}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"cif\": \"634743268\",\r\n  \"aadharnumber\": \"480636610121\",\r\n  \"aadharotp\": \"449167\",\r\n  \"allowedfailure\": 2,\r\n  \"blockinghours\": 2,\r\n   \"txn\": \"000023\",\r\n    \"communicationId\": \"test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}{{basePath}}/verifyaadharotp"
+			},
+			"response": []
+		},
+		{
+			"name": "setloginpin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"SET LOGIN PIN:\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "dbp-id",
+						"value": "{{dbp-id}}",
+						"type": "text"
+					},
+					{
+						"key": "dbp-secret",
+						"value": "{{dbp-secret}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"cif\": \"634743268\",\r\n  \"loginpin\": \"1213\",\r\n  \"confirmloginpin\": \"1213\",\r\n  \"loginpinhistorycount\": 3,\r\n  \"loginpinlength\": 4,\r\n  \"event\": \"registration\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}{{basePath}}/setloginpin"
+			},
+			"response": []
+		},
+		{
+			"name": "settpin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"SETTPIN: \", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "dbp-id",
+						"value": "018d83a55a507e6a978008b03ca1485d",
+						"type": "text"
+					},
+					{
+						"key": "dbp-secret",
+						"value": "018d84783a537d2d9a85d9342ca769d7",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"cif\": \"{{cif}}\",\r\n  \"tpin\": \"1213\",\r\n  \"confirmtpin\": \"1213\",\r\n  \"tpinhistorycount\": 3,\r\n  \"tpinlength\": 4\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}{{basePath}}/settpin"
+			},
+			"response": []
+		},
+		{
+			"name": "generateotp",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"POST: GENERATEVERIFYOTP: \", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"var responseBody = pm.response.json();\r",
+							"var stateId = pm.variables.replaceIn(responseBody.stateId);\r",
+							"var hint = pm.variables.replaceIn(responseBody.hint);\r",
+							"\r",
+							"pm.collectionVariables.set(\"stateId\", stateId);\r",
+							"pm.collectionVariables.set(\"hint\", hint);\r",
+							"console.log(\"stateId:\", stateId)"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "dbp-id",
+						"value": "{{dbp-id}}",
+						"type": "text"
+					},
+					{
+						"key": "dbp-secret",
+						"value": "{{dbp-secret}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"cif\": \"{{cif}}\",\r\n  \"mail\": \"{{mail}}\",\r\n  \"mobile\":\"{{mobile}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}{{basePath}}/generateotp"
+			},
+			"response": []
+		},
+		{
+			"name": "verifyotp",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"PUT: GENERATEVERIFYOTP: \", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "dbp-id",
+						"value": "{{dbp-id}}",
+						"type": "text"
+					},
+					{
+						"key": "dbp-secret",
+						"value": "{{dbp-secret}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "StateId",
+						"value": "{{stateId}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"cif\": \"{{cif}}\",\r\n  \"otp\": \"{{otp}}\",\r\n  \"otphint\": \"{{otphint}}\",\r\n  \"id\": \"1234\",\r\n  \"allowedfailure\": \"3\",\r\n  \"blockinghours\": \"2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}{{basePath}}/verifyotp"
+			},
+			"response": []
+		},
+		{
+			"name": "mblogin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"MBLOGIN: \", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "dbp-id",
+						"value": "{{dbp-id}}",
+						"type": "text"
+					},
+					{
+						"key": "dbp-secret",
+						"value": "{{dbp-secret}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"deviceid\": \"{{device_id}}\",\r\n  \"simdata\": \"{{sim_data}}\",\r\n  \"loginpin\": \"1212\",\r\n  \"sessionexpiry\": 30,\r\n  \"allowedfailure\": 3,\r\n  \"loginpinexpiry\": 1,\r\n  \"loginwithbiometric\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}{{basePath}}/mblogin"
+			},
+			"response": []
+		},
+		{
+			"name": "mbreregistration",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"MBREREGISTRATION: \", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "dbp-id",
+						"value": "{{dbp-id}}",
+						"type": "text"
+					},
+					{
+						"key": "dbp-secret",
+						"value": "{{dbp-secret}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"cif\": \"634743268\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}{{basePath}}/mbreregistration"
+			},
+			"response": []
+		},
+		{
+			"name": "verifydebitcard_v1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"VERIFYDEBITCARD: \", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "dbp-id",
+						"value": "{{dbp-id}}",
+						"type": "text"
+					},
+					{
+						"key": "dbp-secret",
+						"value": "{{dbp-secret}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"cif\": \"634744346\",\r\n  \"transRefNum\": \"918110095092\",\r\n  \"cardNum\": \"6521635194022968\",\r\n  \"cardExpiry\": \"1224\",\r\n  \"pin\": \"2968\",\r\n  \"allowedfailure\": 10,\r\n  \"blockinghours\": 2,\r\n  \"mobile\":\"9049894475\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}{{basePath}}/verifydebitcard_v1"
+			},
+			"response": []
+		},
+		{
+			"name": "generatebranchtoken",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"POST: GENERATEVERIFYOTP: \", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "dbp-id",
+						"value": "{{dbp-id}}",
+						"type": "text"
+					},
+					{
+						"key": "dbp-secret",
+						"value": "{{dbp-secret}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"cif\": \"634743268\",\r\n \"reason\": \"mbregistration\",\r\n   \"mobile\":\"7304675947\",\r\n     \"mail\": \"tanvidtest14@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}{{basePath}}/generatebranchtoken"
+			},
+			"response": []
+		},
+		{
+			"name": "verifybranchtoken",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"POST: GENERATEVERIFYOTP: \", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "dbp-id",
+						"value": "{{dbp-id}}",
+						"type": "text"
+					},
+					{
+						"key": "dbp-secret",
+						"value": "{{dbp-secret}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"otp\": \"8917\",\r\n  \"cif\": \"{{cif}}\",\r\n  \"allowedfailure\": 2,\r\n  \"blockinghours\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}{{basePath}}/verifybranchtoken"
+			},
+			"response": []
+		},
+		{
+			"name": "validatejwt",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"MBLOGIN: \", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "dbp-id",
+						"value": "{{dbp-id}}",
+						"type": "text"
+					},
+					{
+						"key": "dbp-secret",
+						"value": "{{dbp-secret}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"token\": \"eyJhbGciOiJSUzI1NiIsImtpZCI6Imh0dHBzZXJ2ZXJrZXkiLCJ0eXAiOiJhdCtqd3QifQ.eyJhdWQiOlsiY2xpZW50X3JvcGMiXSwiY2xpZW50X2lkIjoiY2xpZW50X3JvcGMiLCJleHAiOjE3MTA0OTE4ODgsImdyYW50X2lkIjoiZDliM2QxNDUtOWRlNC00ZTc4LTlhZjQtMjNkY2NmZTIzZGJiIiwiaWF0IjoxNzEwNDg0Njg4LCJpc0VtcGxveWVlRmxhZyI6dHJ1ZSwiaXNzIjoiaHR0cHM6Ly9pYW1sYWIuYXBwcy5ucHJkLnViaWRwLmxvY2FsIiwianRpIjoiZjlmNTdkNzYtNmQzMS00ZDU4LTgwYjItMzZiMmE1ODBhYzQ5IiwibmJmIjoxNzEwNDg0Njg4LCJzY29wZSI6IiIsInN1YiI6IjE3MTA0ODM3MDEiLCJ1c2VyX25hbWUiOiIxNzEwNDgzNzAxIn0.ace3JhYTW8-9ERhAOfGL-RI5Cmupe3_YBGofcVpKII5pTh8ZpfULcvDdOpLWML2C0zqRdcNFw34Hdh2d_P2168siJuWRhzzIP5Xhssa_Vyjyh_or2J82lQ2TgnWNBWLEty_tT86Ef9AmYrRK8CMQHkxBlaUiQYsg_Ecr2EIlN3nqTDPCYHBdOPz7MqTAu7VWzqii5Qn_oSEA2OfLnhOmQDyIzgst41k_Mexenn5zndIBXoNh14sYIelw4HaknzOcJ0zYZ4uRTmg-TdgMcBGMC5X6te4IG5jtV1j3RMZ3ZWdgYGBTsnMWEEjEi_p-qN-9bgIc9d4L9GuGTzqr-8ERXg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}{{basePath}}/validatejwt"
+			},
+			"response": []
+		},
+		{
+			"name": "verifycifexistence",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"VERIFY CIF EXISTANCE\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"// Stores the response code in an environment or global variable\r",
+							"var responseJSON = pm.response.json();\r",
+							"var respCIF = responseJSON.response[0];\r",
+							"//pm.globals.set(\"CIF\", respCIF);\r",
+							"//var obj = pm.response.json()[\"response\"];\r",
+							"pm.globals.set(\"cif\", respCIF);\r",
+							"console.log(respCIF);\r",
+							"pm.collectionVariables.set(\"cif\", respCIF);\r",
+							"//pm.globals.get(\"respCIF\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "dbp-id",
+						"value": "{{dbp-id}}",
+						"type": "text"
+					},
+					{
+						"key": "dbp-secret",
+						"value": "{{dbp-secret}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"mobile\": \"{{mobile}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}{{basePath}}/verifycifexistence"
+			},
+			"response": []
+		},
+		{
+			"name": "verifyTPIN",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"SETTPIN: \", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "dbp-id",
+						"value": "018d83a55a507e6a978008b03ca1485d",
+						"type": "text"
+					},
+					{
+						"key": "dbp-secret",
+						"value": "018d84783a537d2d9a85d9342ca769d7",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"cif\": \"634743268\",\r\n  \"tpin\": \"1960\",\r\n  \"refreshtoken\":\"BI-SHdZNhf7i08H5xNaYQfwF0oG_E7Zp2Sgssvoc114.gQ-ZOGxWCEwFKBf75VxyvF7BOgU7TzsVpxz-hcsXa357D7X1OIeGzk-Q7qm03ueHEsV2O8j7u6f9CjkyZhhRVg\",\r\n  \"allowedfailure\":3\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}{{basePath}}/verifytpin"
+			},
+			"response": []
+		},
+		{
+			"name": "revokejwt",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"MBLOGIN: \", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "dbp-id",
+						"value": "{{dbp-id}}",
+						"type": "text"
+					},
+					{
+						"key": "dbp-secret",
+						"value": "{{dbp-secret}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"token\": \"eyJhbGciOiJSUzI1NiIsImtpZCI6Imh0dHBzZXJ2ZXJrZXkiLCJ0eXAiOiJhdCtqd3QifQ.eyJhY3RpdmVGbGFnIjp0cnVlLCJhdWQiOlsiY2xpZW50X3JvcGMiXSwiY2xpZW50X2lkIjoiY2xpZW50X3JvcGMiLCJkZXNpZ25hdGlvbiI6IkFNIiwiZXhwIjoxNzA4ODU0ODUyLCJncmFudF9pZCI6Ijk3MjUwNzVhLTRjM2UtNDA0OS04OGJmLTljYTQ2M2FmMjg1MyIsImdyb3VwcyI6WyJzdXBwb3J0IiwidXNlciJdLCJpYXQiOjE3MDg4NDc2NTEsImlzRW1wbG95ZWVGbGFnIjp0cnVlLCJpc3MiOiJodHRwczovL2lhbWxhYi5hcHBzLm5wcmQudWJpZHAubG9jYWwiLCJqdGkiOiJjMjViZmE5Ni1hYjU5LTRmYWQtYjk1Yi03NjE3MzllZGNlZTciLCJuYmYiOjE3MDg4NDc2NTEsIm9mZmljZVR5cGUiOiJSTyIsInJvbGVEZXNjcmlwdGlvbiI6IlJlZ2lvbmFsIE9mZmljZXIiLCJyb2xlSWQiOiJSTyIsInJvbGVSaWdodHMiOlsiR2xvYmFsIFNlYXJjaCJdLCJzY29wZSI6Im9wZW5pZCIsInNvbElEIjoiNTIxNzAiLCJzdWIiOiIxNzA4ODQ3NTgxIiwic3VybmFtZSI6WyIxNzA4ODQ3NTgxIl19.AsLsdUnMYFtTFy_htHn6FHXdj7IK0LkvqAWj5gaEhONWfYHJ7dsoBGflpswbSaHqUn6fPNWSDWNDTJvCGLCam6m0ZWnqsP--4QJNuYP0aNCJZ2gCiTI1D1zxxsd-sd4J_FKVOdlTh-XEuvFo9WqwylX4qMzpT1AkmGyfcHAbvpEo8gzOmNvFyb5Pxq7ycIUZmOZyxJtEYp7PATOyIHJPZrMkp8c0sqFuQdgosvli7jW-ToTp1G87Tc_7VWYUxHkAmgdak37Cps0qA-StlcoHWr3_zIJ_EJvelft-odfZRA8hUpGBMrt46xZb91oYKO4VI4TTYgwqu7aFjj0mkFubQQ\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}{{basePath}}/revokejwt"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "https://rmb.unionbankofindia.co.in",
+			"type": "string"
+		},
+		{
+			"key": "basePath",
+			"value": "/mpgw/mga/sps/apiauthsvc/policy",
+			"type": "string"
+		},
+		{
+			"key": "device_id",
+			"value": "9291fad6-b165-4502-aa17-5008331cd3cf",
+			"type": "string"
+		},
+		{
+			"key": "customerID",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "mobile",
+			"value": "7304675947"
+		},
+		{
+			"key": "sim_data",
+			"value": "2fbfcf1f-821b-4e9a-b90f-fde8d9e242ed|0|1"
+		},
+		{
+			"key": "timestamp",
+			"value": ""
+		},
+		{
+			"key": "aadhar",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "mail",
+			"value": "tanvidtest14@gmail.com",
+			"type": "string"
+		},
+		{
+			"key": "cif",
+			"value": "634743268"
+		},
+		{
+			"key": "sourceoperator",
+			"value": "jio",
+			"type": "string"
+		},
+		{
+			"key": "city",
+			"value": "mumbai",
+			"type": "string"
+		},
+		{
+			"key": "leadDateTime",
+			"value": "2016-08-29T09:12:33.001Z",
+			"type": "string"
+		},
+		{
+			"key": "stateId",
+			"value": ""
+		},
+		{
+			"key": "hint",
+			"value": ""
+		},
+		{
+			"key": "dbp-id",
+			"value": "018d83a55a507e6a978008b03ca1485d",
+			"type": "string"
+		},
+		{
+			"key": "dbp-secret",
+			"value": "018d84783a537d2d9a85d9342ca769d7",
+			"type": "string"
+		}
+	]
+}

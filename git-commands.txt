@@ -1,0 +1,62 @@
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+1.git init
+
+2.git status
+
+3.git add.
+
+4.git checkout -b "branch name"
+
+5.git reset  <file name>
+
+6.git commit -m "msg"
+
+7.git push origin branchName
+
+
+
+git fetch origin siva-branch
+
+git pull origin siva-branch
+
+git push origin --delete siva-branch
+
+git rm --cache *
+
+git add *
+
+git rm --cache .gitignore rm '.gitignore'
+
+git pull origin develop
+
+
+
+
+
+https://gitlab.unionbankofindia.co.in/UBI-Microservices-DBP/login-registration/login-registration-qry-service/-/merge_requests/6/diffs
+
+
+
+
+
+
+
+
+
+
+
+
+
+Remove and commit:
+
+git rm -r <folder-name>
+git commit -m "Remove <folder-name> from the repository"
+git push origin <branch-name>
+
+
+If it's not tracked, just commit your other changes as usual:
+git commit -m "Commit message"
+git push origin <branch-name>
+
