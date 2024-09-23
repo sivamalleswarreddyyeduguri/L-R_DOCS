@@ -1,0 +1,274 @@
+{
+	"info": {
+		"_postman_id": "31726f53-ead3-452d-8406-768ed9240fc6",
+		"name": "MFA_BFFF",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31321521",
+		"_collection_link": "https://orange-shadow-413020.postman.co/workspace/DROP3~c79dc720-93d2-4aa5-a002-8d97dc53fe42/collection/31321521-31726f53-ead3-452d-8406-768ed9240fc6?action=share&source=collection_link&creator=31321521"
+	},
+	"item": [
+		{
+			"name": "generateOtp",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Extract the txn value from the response JSON\r",
+							"const responseJson = pm.response.json();\r",
+							"const txnValue = responseJson.generateAadharOtpResp.txn;\r",
+							"\r",
+							"// Set the txn value as a collection variable\r",
+							"pm.collectionVariables.set(\"txn\", txnValue);\r",
+							"\r",
+							"// Log the txn value to the console for verification\r",
+							"console.log(\"txn value stored in collection variable:\", txnValue);\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"packages": {},
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"operation\": \"generateOtp\",\r\n    \"generateAadharOtp\": {\r\n        \"cif\": \"{{cif}}\",\r\n        \"vid\": \"{{vid}}\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://login-registration-bff-service-biz-login-registration-dev.apps.nprd.ubidp.local/app/login-registration/api/v1/verify-user",
+					"protocol": "https",
+					"host": [
+						"login-registration-bff-service-biz-login-registration-dev",
+						"apps",
+						"nprd",
+						"ubidp",
+						"local"
+					],
+					"path": [
+						"app",
+						"login-registration",
+						"api",
+						"v1",
+						"verify-user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "validateOtp",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"operation\": \"validateOtp\",\r\n    \"verifyAadharOtp\": {\r\n        \"otp\": \"887429\",\r\n        \"uid\": \"{{vid}}\",\r\n        \"txn\": \"{{txn}}\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://login-registration-bff-service-biz-login-registration-dev.apps.nprd.ubidp.local/app/login-registration/api/v1/verify-user",
+					"protocol": "https",
+					"host": [
+						"login-registration-bff-service-biz-login-registration-dev",
+						"apps",
+						"nprd",
+						"ubidp",
+						"local"
+					],
+					"path": [
+						"app",
+						"login-registration",
+						"api",
+						"v1",
+						"verify-user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "validateDebitCard",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Function to generate a 12-digit random number\r",
+							"function generate12DigitRandomNumber() {\r",
+							"    let randomNumber = '';\r",
+							"    for (let i = 0; i < 12; i++) {\r",
+							"        randomNumber += Math.floor(Math.random() * 10); // Add a random digit (0-9)\r",
+							"    }\r",
+							"    return randomNumber;\r",
+							"}\r",
+							"\r",
+							"// Generate the random number\r",
+							"const random12DigitNumber = generate12DigitRandomNumber();\r",
+							"\r",
+							"// Store the random number as a collection variable\r",
+							"pm.collectionVariables.set(\"random12DigitNumber\", random12DigitNumber);\r",
+							"\r",
+							"// Log the random number to the console for verification\r",
+							"console.log(\"12-digit random number stored in collection variable:\", random12DigitNumber);\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"operation\": \"validateDebitCard\",\r\n    \"verifyDebitCard\": {\r\n        \"transRefNum\":\"{{random12DigitNumber}}\",\r\n        \"cardNum\": \"4199813000000173\",\r\n        \"cardExpiry\": \"2506\",\r\n        \"pin\": \"0173\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://login-registration-bff-service-biz-login-registration-dev.apps.nprd.ubidp.local/app/login-registration/api/v1/verify-user",
+					"protocol": "https",
+					"host": [
+						"login-registration-bff-service-biz-login-registration-dev",
+						"apps",
+						"nprd",
+						"ubidp",
+						"local"
+					],
+					"path": [
+						"app",
+						"login-registration",
+						"api",
+						"v1",
+						"verify-user"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "cif",
+			"value": "634739412",
+			"type": "string"
+		},
+		{
+			"key": "vid",
+			"value": "902913665401",
+			"type": "string"
+		},
+		{
+			"key": "txn",
+			"value": ""
+		},
+		{
+			"key": "random12DigitNumber",
+			"value": ""
+		}
+	]
+}

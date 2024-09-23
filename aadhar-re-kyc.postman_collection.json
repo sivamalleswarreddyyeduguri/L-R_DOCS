@@ -1,0 +1,183 @@
+{
+	"info": {
+		"_postman_id": "2ddb1210-9447-4601-a469-3b6580403a15",
+		"name": "aadhar-re-kyc",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16796619"
+	},
+	"item": [
+		{
+			"name": "generateOtp",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cif\":\"12345\",\r\n    \"vid\": \"477716719228\",\r\n    \"consent\": \"Y\"\r\n   \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://cust-acc-bff-svc-bff-mob-uat.apps.nprd.ubidp.local/app/customer/api/v1/generateOtp",
+					"protocol": "https",
+					"host": [
+						"cust-acc-bff-svc-bff-mob-uat",
+						"apps",
+						"nprd",
+						"ubidp",
+						"local"
+					],
+					"path": [
+						"app",
+						"customer",
+						"api",
+						"v1",
+						"generateOtp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "generateOtp-proxy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cif\":\"12345\",\r\n    \"vid\": \"477716719228\",\r\n    \"consent\": \"Y\"\r\n   \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://adhaar-ekyc-service-proxy-aadhaar-dev.apps.nprd.ubidp.local/api/v1/aadhaar/generateOtp",
+					"protocol": "https",
+					"host": [
+						"adhaar-ekyc-service-proxy-aadhaar-dev",
+						"apps",
+						"nprd",
+						"ubidp",
+						"local"
+					],
+					"path": [
+						"api",
+						"v1",
+						"aadhaar",
+						"generateOtp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "validateOtp",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cif\":\"ssss\",\r\n    \"otp\": \"956803\",\r\n    \"uid\": \"477716719228\",\r\n    \"rc\": \"Y\",\r\n    \"txn\": \"000023\"\r\n}\r\n    ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://cust-acc-bff-svc-bff-mob-uat.apps.nprd.ubidp.local/app/customer/api/v1/validateOtp",
+					"protocol": "https",
+					"host": [
+						"cust-acc-bff-svc-bff-mob-uat",
+						"apps",
+						"nprd",
+						"ubidp",
+						"local"
+					],
+					"path": [
+						"app",
+						"customer",
+						"api",
+						"v1",
+						"validateOtp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "validateOtp-proxy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cif\":\"ssss\",\r\n    \"otp\": \"956803\",\r\n    \"uid\": \"477716719228\",\r\n    \"rc\": \"Y\",\r\n    \"txn\": \"000023\"\r\n}\r\n    ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://adhaar-ekyc-service-proxy-aadhaar-dev.apps.nprd.ubidp.local/api/v1/aadhaar/validateOtp",
+					"protocol": "https",
+					"host": [
+						"adhaar-ekyc-service-proxy-aadhaar-dev",
+						"apps",
+						"nprd",
+						"ubidp",
+						"local"
+					],
+					"path": [
+						"api",
+						"v1",
+						"aadhaar",
+						"validateOtp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCustomerByCIF",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cif\": \"35381304\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://cust-acc-bff-svc-bff-mob-dev.apps.nprd.ubidp.local/app/customer/api/v1/getCustomerByCIF",
+					"protocol": "https",
+					"host": [
+						"cust-acc-bff-svc-bff-mob-dev",
+						"apps",
+						"nprd",
+						"ubidp",
+						"local"
+					],
+					"path": [
+						"app",
+						"customer",
+						"api",
+						"v1",
+						"getCustomerByCIF"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

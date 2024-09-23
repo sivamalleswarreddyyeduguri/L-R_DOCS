@@ -1,0 +1,45 @@
+{
+	"info": {
+		"_postman_id": "81bae609-74a1-4e48-9f97-1a56442412f5",
+		"name": "CORP-USER-LOGIN",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37138264"
+	},
+	"item": [
+		{
+			"name": "corp-user-login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"adani\",\r\n  \"password\": \"Passw0rd\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://login-registration-bff-service-biz-login-registration-dev.apps.nprd.ubidp.local/app/login-registration/api/v1/corpLogin",
+					"protocol": "https",
+					"host": [
+						"login-registration-bff-service-biz-login-registration-dev",
+						"apps",
+						"nprd",
+						"ubidp",
+						"local"
+					],
+					"path": [
+						"app",
+						"login-registration",
+						"api",
+						"v1",
+						"corpLogin"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

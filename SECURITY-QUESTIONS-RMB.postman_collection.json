@@ -1,0 +1,166 @@
+{
+	"info": {
+		"_postman_id": "42eecef4-526a-4c0a-9d45-ec8743bbe91b",
+		"name": "SECURITY-QUESTIONS-RMB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37138264"
+	},
+	"item": [
+		{
+			"name": "get-user-knowledge-questions",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "dbp-id",
+						"value": "018d83a55a507e6a978008b03ca1485d"
+					},
+					{
+						"key": "dbp-secret",
+						"value": "018d84783a537d2d9a85d9342ca769d7"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Cookie",
+						"value": "40249c8174bf3736f0f74654fed7e718=1ed3ca734653b299c99f05db7a4de33a"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"cif\": \"57913116\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://rmb.unionbankofindia.co.in/mpgw/app/login-registration/api/v1/get-security-questions",
+					"protocol": "https",
+					"host": [
+						"rmb",
+						"unionbankofindia",
+						"co",
+						"in"
+					],
+					"path": [
+						"mpgw",
+						"app",
+						"login-registration",
+						"api",
+						"v1",
+						"get-security-questions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "set-knowledge-questions",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "dbp-id",
+						"value": "018d83a55a507e6a978008b03ca1485d"
+					},
+					{
+						"key": "dbp-secret",
+						"value": "018d84783a537d2d9a85d9342ca769d7"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Cookie",
+						"value": "40249c8174bf3736f0f74654fed7e718=1ed3ca734653b299c99f05db7a4de33a; 40249c8174bf3736f0f74654fed7e718=340f4b781570bc1c3027e706b7fbdca1; AMWEBJCT!%2Fmga!JSESSIONID=0000LnXI2py0sj58V-_oW0LrTYP:c78638a2-f0f9-416b-8c9b-2a0f7c22c280; IV_JCT=%2Fmga; c7230f5e9aa7d295ac57fe23404537cf=66c3a3f42c90dce1ff599ca2959bc86e"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"cif\": \"57913116\",\n  \"questions\": [\n    {\n      \"id\": \"1\",\n      \"answer\": \"tommy\",\n      \"question\": \"Name of your pet?\"\n    },\n    {\n      \"id\": \"2\",\n      \"answer\": \"pune\",\n      \"question\": \"Name of town where you were born?\"\n    }\n  ],\n   \"deviceid\": \"3275264\",\n   \"simdata\": \"327062864|4|3\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://rmb.unionbankofindia.co.in/mpgw/app/login-registration/api/v1/security-question",
+					"protocol": "https",
+					"host": [
+						"rmb",
+						"unionbankofindia",
+						"co",
+						"in"
+					],
+					"path": [
+						"mpgw",
+						"app",
+						"login-registration",
+						"api",
+						"v1",
+						"security-question"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-all-knowledge-questions",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "dbp-id",
+						"value": "018d83a55a507e6a978008b03ca1485d"
+					},
+					{
+						"key": "dbp-secret",
+						"value": "018d84783a537d2d9a85d9342ca769d7"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Cookie",
+						"value": "40249c8174bf3736f0f74654fed7e718=1ed3ca734653b299c99f05db7a4de33a; 40249c8174bf3736f0f74654fed7e718=340f4b781570bc1c3027e706b7fbdca1; AMWEBJCT!%2Fmga!JSESSIONID=0000LnXI2py0sj58V-_oW0LrTYP:c78638a2-f0f9-416b-8c9b-2a0f7c22c280; IV_JCT=%2Fmga; c7230f5e9aa7d295ac57fe23404537cf=66c3a3f42c90dce1ff599ca2959bc86e; 40249c8174bf3736f0f74654fed7e718=340f4b781570bc1c3027e706b7fbdca1; AMWEBJCT!%2Fmga!JSESSIONID=0000LnXI2py0sj58V-_oW0LrTYP:c78638a2-f0f9-416b-8c9b-2a0f7c22c280; IV_JCT=%2Fmga; c7230f5e9aa7d295ac57fe23404537cf=66c3a3f42c90dce1ff599ca2959bc86e"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://rmb.unionbankofindia.co.in/mpgw/app/login-registration/api/v1/get-all-knowledge-questions",
+					"protocol": "https",
+					"host": [
+						"rmb",
+						"unionbankofindia",
+						"co",
+						"in"
+					],
+					"path": [
+						"mpgw",
+						"app",
+						"login-registration",
+						"api",
+						"v1",
+						"get-all-knowledge-questions"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,194 @@
+{
+	"info": {
+		"_postman_id": "cb80f13f-b576-4bd1-9f42-9b4d021b6fea",
+		"name": "MFA-RMB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37138264"
+	},
+	"item": [
+		{
+			"name": "https://rmb.unionbankofindia.co.in/mpgw/app/login-registration/api/v1/verify-user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "dbp-id",
+						"value": "018d83a55a507e6a978008b03ca1485d",
+						"type": "text"
+					},
+					{
+						"key": "dbp-secret",
+						"value": "018d84783a537d2d9a85d9342ca769d7",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"operation\": \"validateOtp\",        // validateOtp,generateOtp,validateDebitCard\r\n    \"generateAadharOtp\": {\r\n        \"cif\": \"57913116\",\r\n        \"vid\": \"460461887392\"\r\n    },\r\n    \"verifyAadharOtp\": {\r\n        \"otp\": \"654744\",\r\n        \"uid\": \"460461887392\",\r\n        \"txn\": \"000048\"\r\n    },\r\n    \"verifyDebitCard\": {\r\n        \"transRefNum\": \"\",\r\n        \"cardNum\": \"\",\r\n        \"cardExpiry\": \"\",\r\n        \"pin\": \"\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://rmb.unionbankofindia.co.in/mpgw/app/login-registration/api/v1/verify-user",
+					"protocol": "https",
+					"host": [
+						"rmb",
+						"unionbankofindia",
+						"co",
+						"in"
+					],
+					"path": [
+						"mpgw",
+						"app",
+						"login-registration",
+						"api",
+						"v1",
+						"verify-user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "generateOtp",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "dbp-id",
+						"value": "018d83a55a507e6a978008b03ca1485d",
+						"type": "text"
+					},
+					{
+						"key": "dbp-secret",
+						"value": "018d84783a537d2d9a85d9342ca769d7",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"operation\": \"generateOtp\",        // validateOtp,generateOtp,validateDebitCard\r\n    \"generateAadharOtp\": {\r\n        \"cif\": \"57913116\",\r\n        \"vid\": \"460461887392\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://rmb.unionbankofindia.co.in/mpgw/app/login-registration/api/v1/verify-user",
+					"protocol": "https",
+					"host": [
+						"rmb",
+						"unionbankofindia",
+						"co",
+						"in"
+					],
+					"path": [
+						"mpgw",
+						"app",
+						"login-registration",
+						"api",
+						"v1",
+						"verify-user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "validateOtp",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "dbp-id",
+						"value": "018d83a55a507e6a978008b03ca1485d",
+						"type": "text"
+					},
+					{
+						"key": "dbp-secret",
+						"value": "018d84783a537d2d9a85d9342ca769d7",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"operation\": \"validateOtp\", \r\n    \"verifyAadharOtp\": {\r\n        \"otp\": \"\",\r\n        \"uid\": \"460461887392\",\r\n        \"txn\": \"\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://rmb.unionbankofindia.co.in/mpgw/app/login-registration/api/v1/verify-user",
+					"protocol": "https",
+					"host": [
+						"rmb",
+						"unionbankofindia",
+						"co",
+						"in"
+					],
+					"path": [
+						"mpgw",
+						"app",
+						"login-registration",
+						"api",
+						"v1",
+						"verify-user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "validateDebitCard",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "dbp-id",
+						"value": "018d83a55a507e6a978008b03ca1485d",
+						"type": "text"
+					},
+					{
+						"key": "dbp-secret",
+						"value": "018d84783a537d2d9a85d9342ca769d7",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"operation\": \"validateDebitCard\",\r\n    \"verifyDebitCard\": {\r\n        \"transRefNum\": \"879798986676\",\r\n        \"cardNum\": \"4199813000000173\",\r\n        \"cardExpiry\": \"2506\",\r\n        \"pin\": \"0173\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://rmb.unionbankofindia.co.in/mpgw/app/login-registration/api/v1/verify-user",
+					"protocol": "https",
+					"host": [
+						"rmb",
+						"unionbankofindia",
+						"co",
+						"in"
+					],
+					"path": [
+						"mpgw",
+						"app",
+						"login-registration",
+						"api",
+						"v1",
+						"verify-user"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

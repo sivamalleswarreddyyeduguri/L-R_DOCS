@@ -1,0 +1,46 @@
+{
+	"info": {
+		"_postman_id": "e4af5104-5b23-4278-8566-2e5493a6441c",
+		"name": "MB-REGISTRATION",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37138264"
+	},
+	"item": [
+		{
+			"name": "mbregistration",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"deviceid\": \"49015420323751\",\r\n  \"mobile\": \"9245363534\",\r\n  \"cif\": \"12345678\",\r\n  \"simdata\": \"12115|2|3\",\r\n  \"mail\": \"test.user@ibm.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://login-registration-bff-service-biz-login-registration-dev.apps.nprd.ubidp.local/app/login-registration/api/v1/register/user",
+					"protocol": "https",
+					"host": [
+						"login-registration-bff-service-biz-login-registration-dev",
+						"apps",
+						"nprd",
+						"ubidp",
+						"local"
+					],
+					"path": [
+						"app",
+						"login-registration",
+						"api",
+						"v1",
+						"register",
+						"user"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

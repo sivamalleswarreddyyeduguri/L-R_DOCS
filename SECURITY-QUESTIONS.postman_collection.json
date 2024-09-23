@@ -1,0 +1,115 @@
+{
+	"info": {
+		"_postman_id": "ad26c4d9-1052-4bb3-b65c-1be7c3a2133c",
+		"name": "SECURITY-QUESTIONS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37138264"
+	},
+	"item": [
+		{
+			"name": "set-knowledge-questions",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"cif\": \"891745900\",\r\n  \"questions\": [\r\n    {\r\n      \"id\": \"1\",\r\n      \"answer\": \"tommy\",\r\n      \"question\": \"Name of your pet?\"\r\n    },\r\n    {\r\n      \"id\": \"2\",\r\n      \"answer\": \"pune\",\r\n      \"question\": \"Name of town where you were born?\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://login-registration-bff-service-biz-login-registration-dev.apps.nprd.ubidp.local/app/login-registration/api/v1/security-question",
+					"protocol": "https",
+					"host": [
+						"login-registration-bff-service-biz-login-registration-dev",
+						"apps",
+						"nprd",
+						"ubidp",
+						"local"
+					],
+					"path": [
+						"app",
+						"login-registration",
+						"api",
+						"v1",
+						"security-question"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-user-knowledge-questions",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"cif\": \"891745900\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://login-registration-bff-service-biz-login-registration-dev.apps.nprd.ubidp.local/app/login-registration/api/v1/get-security-questions",
+					"protocol": "https",
+					"host": [
+						"login-registration-bff-service-biz-login-registration-dev",
+						"apps",
+						"nprd",
+						"ubidp",
+						"local"
+					],
+					"path": [
+						"app",
+						"login-registration",
+						"api",
+						"v1",
+						"get-security-questions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-all-knowledge-questions",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://login-registration-bff-service-biz-login-registration-dev.apps.nprd.ubidp.local/app/login-registration/api/v1/get-all-knowledge-questions",
+					"protocol": "https",
+					"host": [
+						"login-registration-bff-service-biz-login-registration-dev",
+						"apps",
+						"nprd",
+						"ubidp",
+						"local"
+					],
+					"path": [
+						"app",
+						"login-registration",
+						"api",
+						"v1",
+						"get-all-knowledge-questions"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

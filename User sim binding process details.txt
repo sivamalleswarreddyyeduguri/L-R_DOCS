@@ -1,0 +1,126 @@
+1) UI calls mbregistrationcheckdeviceid api to check device registration status.
+	Input is - deviceId, simdata
+	curl --location 'https://iamlab.apps.nprd.ubidp.local/mga/sps/apiauthsvc/policy/checkmbregistrationwithdeviceid_v1' \
+	--header 'accept: application/json' \
+	--header 'Content-Type: application/json' \
+	--header 'Cookie: AMWEBJCT!%2Fmga!JSESSIONID=0000sEUvkK_0hwOLM9oNET55FIy:50c398d0-3161-4e2b-8673-e1ac1d6bc9f9:805b5d19-5263-4c40-90b0-8630dcb3c88a; IV_JCT=%2Fmga' \
+	--data '{
+		"deviceid": "",
+		"simdata": "",
+	}'
+
+{
+    "response": {
+        "mobile": "",
+        "cif": ""
+    },
+    "respcode": "200"
+}
+
+{
+    "error_code": "E10",
+    "errordesc": "User Does Not Exists"
+}
+	
+
+2) If first api gives error then, ui start sim binding process and send a silent sms to service provider. Otherwise, the flow starts 3rd point and checks current status of the user registration.
+
+	Service Provider then initiates a call towards ibm verify to update user attributes in IBM Verify Cache
+	
+curl --location 'https://iampt.apps.nprd.ubidp.local/mga/sps/apiauthsvc/policy/mbsilentsmsupdatestatus' \
+--header 'Accept: application/json' \
+--header 'Content-Type: application/json' \
+--header 'Cookie: AMWEBJCT!%2Fmga!JSESSIONID=0000uYP1L8xjoVyRcMgP1ipCx90:08ee83e8-760a-4ccc-8438-6fad94bd28ea; IV_JCT=%2Fmga; PD-S-SESSION-ID=1_2_0_ntZ7vqTcl+zJu2XEvCaICsSjsuqw+-kROE7UpLLgsnQmXqcG; AMWEBJCT!%2Fmga!JSESSIONID=0000uYP1L8xjoVyRcMgP1ipCx90:08ee83e8-760a-4ccc-8438-6fad94bd28ea:5609721a-7a03-46d8-bd46-36afed0b17d0; AMWEBJCT!%2Fmga!JSESSIONID=0000vbHbWwMOqSCEBrx5BnPLG8G:9249a84b-67d3-4986-91f3-1184d1d80e3b:c98e2ea1-e11e-4347-b898-0dac79be014e:84ebd54f-a4bf-412a-861c-b77a59162036; IV_JCT=%2Fmga' \
+--data '{
+  
+  "mobile": "9284426607",
+  "city": "Mumbai",
+  "leadDateTime": "2016-08-29T09:12:33.001Z",
+  "smstext": "DBMRGT U2FsdGVkX1/NCVmIb1mDq/PwnJ5nofLDmK015Uk7fQBm61NgrACvXwbUeLUSfMS6pdDgr6tjISS6spWXRCLfn5Hf3/feEelpdYNcM+7Hk7Mw7R3x3Otm/OV5HOnPuUJj",
+  "sourceoperator": "jio"
+
+}'
+
+{
+    "response": {
+        "message": "Silent SMS Status Updated Successfully"
+    },
+    "respcode": "201"
+}
+
+	
+	
+UI initiates a call towards IBM Verify to get user's mobile number in return
+
+
+curl --location 'https://iamlab.apps.nprd.ubidp.local/mga/sps/apiauthsvc/policy/mbsilentsmsgetstatus' \
+--header 'Accept: application/json' \
+--header 'Content-Type: application/json' \
+--header 'Cookie: AMWEBJCT!%2Fmga!JSESSIONID=0000uYP1L8xjoVyRcMgP1ipCx90:08ee83e8-760a-4ccc-8438-6fad94bd28ea; IV_JCT=%2Fmga; PD-S-SESSION-ID=1_2_0_ntZ7vqTcl+zJu2XEvCaICsSjsuqw+-kROE7UpLLgsnQmXqcG; AMWEBJCT!%2Fmga!JSESSIONID=0000uYP1L8xjoVyRcMgP1ipCx90:08ee83e8-760a-4ccc-8438-6fad94bd28ea:5609721a-7a03-46d8-bd46-36afed0b17d0; AMWEBJCT!%2Fmga!JSESSIONID=0000vbHbWwMOqSCEBrx5BnPLG8G:9249a84b-67d3-4986-91f3-1184d1d80e3b:c98e2ea1-e11e-4347-b898-0dac79be014e:84ebd54f-a4bf-412a-861c-b77a59162036; IV_JCT=%2Fmga' \
+--data '{
+  "deviceid": "3AA3C79F-48A7-4D60-90DD-34CBB967E53E",
+  "simdata": "3AA3C79F-48A7-4D60-90DD-34CBB967E53E|0|1"
+}'
+
+
+{
+    "response": {
+        "mobile": "9284426607"
+    },
+    "respcode": "200"
+}
+	
+UI Then calls cbs to get userinfo from there.
+
+
+3) UI calls checkmbregistration api to check the current status of any user entity present in LDAP with the input details. On the basis of the response, UI decides whether to start a fresh registration, resume a registration or present login page to the user.
+
+curl -X 'POST' \
+  'https://iamlab.apps.nprd.ubidp.local/mga/sps/apiauthsvc/policy/checkmbregistration' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "mobile": "9087654321",
+  "deviceid": "49015420323751",
+  "simdata": "12115|2|3"
+}'
+
+{
+  "response": {
+    "first_time_registration": true,
+    "device_changed": true,
+    "sim_changed": true,
+    "mobile_number_changed": true,
+    "loginpinSet": false,
+    "tpinSet": false,
+    "mfaSuccess": false
+  },
+  "respcode": "200"
+}
+
+4) On the basis of the response, UI decides whether to resume a registration or to start a fresh registration and accordingly call mbregistration api.
+
+curl --location 'https://iamsit.apps.nprd.ubidp.local/mga/sps/apiauthsvc/policy/mbregistration' \
+--header 'accept: application/json' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "deviceid": "3275264",
+  "mobile":"9926255429",
+  "cif": "32701064",
+  "simdata": "327062864|4|4",
+  "mail":"abhigohe60@gmail.com"
+}' -k 
+
+{
+    "response": {
+        "message": "Perfect! Your SIM binding was successful."
+    },
+    "respcode": "201"
+}
+
+5) Post this UI does mfa of the user using either aadhar, debit card or branch token.
+
+
+
+
+

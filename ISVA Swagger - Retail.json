@@ -1,0 +1,5364 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "IBM Security Verify Access API",
+    "version": "1.0.0"
+  },
+  "host": "iamlab.apps.nprd.ubidp.local",
+  "basePath": "/mga/sps/apiauthsvc/policy",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/checkmbregistrationwithdeviceid": {
+      "post": {
+        "summary": "Mobile Banking Check registration with Device ID",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/checkmbregistrationwithdeviceid"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "mobile": {
+                      "type": "string",
+                      "example": 9876543210
+                    }
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/components/Error/Internal"
+            }
+          }
+        }
+      }
+    },
+    "/checkmbregistration": {
+      "post": {
+        "summary": "Mobile Banking User Registration Check",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/checkmbregistration"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "first_time_registration": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "device_changed": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "sim_changed": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "mobile_number_changed": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "loginpinSet": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "tpinSet": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "mfaSuccess": {
+                      "type": "boolean",
+                      "example": false
+                    }
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/components/Error/Internal"
+            }
+          }
+        }
+      }
+    },
+    "/verifycifexistence": {
+      "post": {
+        "summary": "Checks User Status and CIF Existence",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/verifycifexistence"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "example": [
+                    "626004745",
+                    "626004744",
+                    "131313133",
+                    "131313133",
+                    "131313133",
+                    "131313133"
+                  ]
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/components/Error/Internal"
+            }
+          }
+        }
+      }
+    },
+    "/mbregistration": {
+      "post": {
+        "summary": "Mobile Banking User Registration",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/mbregistration"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Perfect! Your SIM binding was successful."
+                    }
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 201
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/components/Error/Internal"
+            }
+          }
+        }
+      }
+    },
+    "/generateaadharotp": {
+      "post": {
+        "summary": "Generates Aadhar OTP",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/generateaadharotp"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Aadhar OTP sent successfully."
+                    },
+                    "txn": {
+                      "type": "string",
+                      "example": "000012"
+                    },
+                    "communicationId": {
+                      "type": "string",
+                      "example": "test"
+                    }
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/components/Error/Internal"
+            }
+          }
+        }
+      }
+    },
+    "/verifyaadharotp": {
+      "post": {
+        "summary": "Verifies Aadhar OTP",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/verifyaadharotp"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Perfect ! Your Customer ID is now verified."
+                    }
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/components/Error/Internal"
+            }
+          }
+        }
+      }
+    },
+    "/setloginpin": {
+      "post": {
+        "summary": "Set Login PIN",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/setloginpin"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Your Login PIN was set successfully."
+                    }
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/components/Error/Internal"
+            }
+          }
+        }
+      }
+    },
+    "/verifyoldloginpin": {
+      "post": {
+        "summary": "Verify Old Login PIN",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/verifyoldloginpin"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Perfect ! Your Old Login pin is verified."
+                    }
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/components/Error/Internal"
+            }
+          }
+        }
+      }
+    },
+    "/npsgenerateotp": {
+      "post": {
+        "summary": "OTP Generation",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/generateotp"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "mechanism": {
+                      "type": "string",
+                      "example": "urn:ibm:security:authentication:asf:mechanism:macotp"
+                    },
+                    "stateId": {
+                      "type": "string",
+                      "example": "ogVbOJy4V5TW59DMVnWH6mviOwBDGqqTsD131f2aSLIo6F1ChOXwzq95fEj4wUlxteINKGod1nJZO9qwNBa11RZkOdFnSToqQWl0wctm6CWuXj9fkjwaZ0KcUSf7pMpA\""
+                    },
+                    "location": {
+                      "type": "string",
+                      "example": "/mga/sps/apiauthsvc/policy/customMacOtp?StateId=ogVbOJy4V5TW59DMVnWH6mviOwBDGqqTsD131f2aSLIo6F1ChOXwzq95fEj4wUlxteINKGod1nJZO9qwNBa11RZkOdFnSToqQWl0wctm6CWuXj9fkjwaZ0KcUSf7pMpA"
+                    },
+                    "hint": {
+                      "type": "string",
+                      "example": 9810
+                    },
+                    "sentTo": {
+                      "type": "string",
+                      "example": "abc.test@ibm.com"
+                    },
+                    "mappingRuleData": {
+                      "type": "string",
+                      "example": ""
+                    }
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "exceptionMsg": {
+                  "type": "string",
+                  "example": "FBTOTP303E The one-time password cannot be delivered to null."
+                },
+                "state": {
+                  "type": "string",
+                  "example": ""
+                },
+                "message": {
+                  "type": "string",
+                  "example": "FBTOTP303E The one-time password cannot be delivered to null."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/generateotp": {
+      "post": {
+        "summary": "OTP Generation",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/generateotp"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "mechanism": {
+                      "type": "string",
+                      "example": "urn:ibm:security:authentication:asf:mechanism:macotp"
+                    },
+                    "stateId": {
+                      "type": "string",
+                      "example": "ogVbOJy4V5TW59DMVnWH6mviOwBDGqqTsD131f2aSLIo6F1ChOXwzq95fEj4wUlxteINKGod1nJZO9qwNBa11RZkOdFnSToqQWl0wctm6CWuXj9fkjwaZ0KcUSf7pMpA\""
+                    },
+                    "location": {
+                      "type": "string",
+                      "example": "/mga/sps/apiauthsvc/policy/customMacOtp?StateId=ogVbOJy4V5TW59DMVnWH6mviOwBDGqqTsD131f2aSLIo6F1ChOXwzq95fEj4wUlxteINKGod1nJZO9qwNBa11RZkOdFnSToqQWl0wctm6CWuXj9fkjwaZ0KcUSf7pMpA"
+                    },
+                    "hint": {
+                      "type": "string",
+                      "example": 9810
+                    },
+                    "sentTo": {
+                      "type": "string",
+                      "example": "abc.test@ibm.com"
+                    },
+                    "mappingRuleData": {
+                      "type": "string",
+                      "example": ""
+                    }
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "exceptionMsg": {
+                  "type": "string",
+                  "example": "FBTOTP303E The one-time password cannot be delivered to null."
+                },
+                "state": {
+                  "type": "string",
+                  "example": ""
+                },
+                "message": {
+                  "type": "string",
+                  "example": "FBTOTP303E The one-time password cannot be delivered to null."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/verifyotp": {
+      "post": {
+        "summary": "OTP Verification",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/verifyotp"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "204": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Perfect ! Your Customer ID is now verified."
+                    }
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "exceptionMsg": {
+                  "type": "string",
+                  "example": "FBTAUT017E Authentication service received an invalid state ID [ePG0EHx9bc1dGgtXe2hRGYeg901VF6Fmp68MIobU0H5Gk6O6b7cboz4Ym9tUisgcFIQmC0jBO26iGECByUygaA5mL0z6xW8Pedwg7EitbilTwnnmBUxTGkc4WPXOOXJH]."
+                },
+                "state": {
+                  "type": "string",
+                  "example": ""
+                },
+                "message": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/settpin": {
+      "post": {
+        "summary": "Set TPIN",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/settpin"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Your TPIN was set successfully."
+                    }
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/components/Error/Internal"
+            }
+          }
+        }
+      }
+    },
+    "/mblogin": {
+      "post": {
+        "summary": "Mobile Banking Login",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/mblogin"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "access_token": {
+                      "type": "string",
+                      "example": "<access_token>"
+                    },
+                    "expires_in": {
+                      "type": "string",
+                      "example": "<timestamp>"
+                    },
+                    "refresh_token": {
+                      "type": "string",
+                      "example": "<refresh_token>"
+                    },
+                    "scope": {
+                      "type": "string",
+                      "example": "openid"
+                    },
+                    "token_type": {
+                      "type": "string",
+                      "example": "bearer"
+                    },
+                    "lastLoginTime": {
+                      "type": "string",
+                      "example": "2024-07-11T12:11:58.376Z"
+                    }
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/components/Error/Internal"
+            }
+          }
+        }
+      }
+    },
+    "/assistedportaljwt": {
+      "post": {
+        "summary": "Assisted portal JWT",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/assistedportaljwt"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "access_token": {
+                      "type": "string",
+                      "example": "<access_token>"
+                    },
+                    "expires_in": {
+                      "type": "string",
+                      "example": "<timestamp>"
+                    },
+                    "refresh_token": {
+                      "type": "string",
+                      "example": "<refresh_token>"
+                    },
+                    "scope": {
+                      "type": "string",
+                      "example": "openid"
+                    },
+                    "token_type": {
+                      "type": "string",
+                      "example": "bearer"
+                    }
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/components/Error/Internal"
+            }
+          }
+        }
+      }
+    },
+    "/mbreregistration": {
+      "post": {
+        "summary": "Mobile Banking User Re-registration",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/mbreregistration"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "User Re Registered successfully."
+                    },
+                    "respcode": {
+                      "type": "string",
+                      "example": 200
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/components/Error/Internal"
+            }
+          }
+        }
+      }
+    },
+    "/checkibregistration": {
+      "post": {
+        "summary": "Internet Banking User Registration Check",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/checkibregistration"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "first_time_registration": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "device_changed": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "mobile_number_changed": {
+                      "type": "boolean",
+                      "example": true
+                    }
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/components/Error/Internal"
+            }
+          }
+        }
+      }
+    },
+    "/ibregistration": {
+      "post": {
+        "summary": "Internet Banking User Registration",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ibregistration"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "User Registration Successfully Completed"
+                    }
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/components/Error/Internal"
+            }
+          }
+        }
+      }
+    },
+    "/setpassword": {
+      "post": {
+        "summary": "Internet Banking User Registration Set Password",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/setpassword"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Password set successfully"
+                    }
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/components/Error/Internal"
+            }
+          }
+        }
+      }
+    },
+    "/ibmoblogin": {
+      "post": {
+        "summary": "Mobile Banking Login",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ibmoblogin"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "User logged in successfully"
+                    }
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/components/Error/Internal"
+            }
+          }
+        }
+      }
+    },
+    "/ibciflogin": {
+      "post": {
+        "summary": "Internet Banking Login using CIF",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ibciflogin"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "User logged in successfully"
+                    }
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/components/Error/Internal"
+            }
+          }
+        }
+      }
+    },
+    "/forgetusername": {
+      "post": {
+        "summary": "Internet Banking Forget Username",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/forgetusername"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "User found with username - 909701"
+                    }
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/components/Error/Internal"
+            }
+          }
+        }
+      }
+    },
+    "/ibreregistration": {
+      "post": {
+        "summary": "Internet Banking User Re-registration",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ibreregistration"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "User Re Registered successfully."
+                    }
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/components/Error/Internal"
+            }
+          }
+        }
+      }
+    },
+    "/mbsilentsmsupdatestatus": {
+      "post": {
+        "summary": "Mobile Banking Silent SMS Verification Update Status",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/mbsilentsmsupdatestatus"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Silent SMS Status Updated Successfully"
+                    }
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 201
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/components/Error/Internal"
+            }
+          }
+        }
+      }
+    },
+    "/mbsilentsmsgetstatus": {
+      "post": {
+        "summary": "Mobile Banking Silent SMS Verification Get Status",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/mbsilentsmsgetstatus"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "mobile": {
+                      "type": "string",
+                      "example": 9876543210
+                    }
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/components/Error/Internal"
+            }
+          }
+        }
+      }
+    },
+    "/validatejwt": {
+      "post": {
+        "summary": "Validate JWT",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/validatejwt"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "active": {
+                      "type": "boolean",
+                      "example": true
+                    }
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/components/Error/Internal"
+            }
+          }
+        }
+      }
+    },
+    "/revokejwt": {
+      "post": {
+        "summary": "Revoke JWT",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/validatejwt"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object"
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/components/Error/Internal"
+            }
+          }
+        }
+      }
+    },
+    "/fetchcifbymobile": {
+      "post": {
+        "summary": "Fetch CIF by passing Mobile Number",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/fetchcifbymobile"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "cif": {
+                      "type": "string",
+                      "example": 12345678
+                    }
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/components/Error/Internal"
+            }
+          }
+        }
+      }
+    },
+    "/checkmbregistrationwithdeviceid_v1": {
+      "post": {
+        "summary": "Mobile Banking Check registration with Device ID",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/checkmbregistrationwithdeviceid"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "mobile": {
+                      "type": "string",
+                      "example": 9876543210
+                    },
+                    "cif": {
+                      "type": "string",
+                      "example": 121212
+                    }
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/components/Error/Internal"
+            }
+          }
+        }
+      }
+    },
+    "/generatebranchtoken": {
+      "post": {
+        "summary": "Branch Token Generation",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/generatebranchtoken"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "string",
+                  "example": "Branch token generated successfully!"
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/components/Error/Internal"
+            }
+          }
+        }
+      }
+    },
+    "/verifybranchtoken": {
+      "post": {
+        "summary": "Branch Token Verification",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/verifybranchtoken"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Perfect ! Your Customer ID is now verified"
+                    }
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/components/Error/Internal"
+            }
+          }
+        }
+      }
+    },
+    "/assistedportalgeneratebranchtoken": {
+      "post": {
+        "summary": "Branch Token Generation",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/generatebranchtoken"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "string",
+                  "example": "OTP generated successfully"
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/components/Error/Internal"
+            }
+          }
+        }
+      }
+    },
+    "/assistedportalverifybranchtoken": {
+      "post": {
+        "summary": "Branch Token Verification",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/verifybranchtoken"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "string",
+                  "example": "Perfect ! Your Customer ID is now verified"
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/components/Error/Internal"
+            }
+          }
+        }
+      }
+    },
+    "/assistedportalstafflogin": {
+      "post": {
+        "summary": "Authenticates staff user",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/assistedportalstafflogin"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "access_token": {
+                      "type": "string",
+                      "example": "<access_token>"
+                    },
+                    "expires_in": {
+                      "type": "string",
+                      "example": "<timestamp>"
+                    },
+                    "refresh_token": {
+                      "type": "string",
+                      "example": "<refresh_token>"
+                    },
+                    "scope": {
+                      "type": "string",
+                      "example": "openid"
+                    },
+                    "token_type": {
+                      "type": "string",
+                      "example": "bearer"
+                    }
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/assistedportalgenerateaadharotp": {
+      "post": {
+        "summary": "Generates Aadhar OTP",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/assistedportalgenerateaadharotp"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Aadhar OTP sent successfully."
+                    },
+                    "txn": {
+                      "type": "string",
+                      "example": "000018"
+                    },
+                    "communicationId": {
+                      "type": "string",
+                      "example": "test"
+                    }
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/components/Error/Internal"
+            }
+          }
+        }
+      }
+    },
+    "/assistedportalverifyaadharotp": {
+      "post": {
+        "summary": "Verifies Aadhar OTP",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/assistedportalverifyaadharotp"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "uidData": {
+                      "type": "object",
+                      "properties": {
+                        "poi": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "example": "John Doe"
+                            },
+                            "dob": {
+                              "type": "string",
+                              "example": 1909
+                            },
+                            "gender": {
+                              "type": "string",
+                              "example": "M"
+                            }
+                          }
+                        },
+                        "poa": {
+                          "type": "object",
+                          "properties": {
+                            "co": {
+                              "type": "string",
+                              "example": null
+                            },
+                            "house": {
+                              "type": "string",
+                              "example": "Plot no 1001"
+                            },
+                            "vtc": {
+                              "type": "string",
+                              "example": "City"
+                            },
+                            "street": {
+                              "type": "string",
+                              "example": "Society"
+                            },
+                            "lm": {
+                              "type": "string",
+                              "example": "Road"
+                            },
+                            "lc": {
+                              "type": "string",
+                              "example": "Area"
+                            },
+                            "subdist": {
+                              "type": "string",
+                              "example": null
+                            },
+                            "dist": {
+                              "type": "string",
+                              "example": "Pune"
+                            },
+                            "state": {
+                              "type": "string",
+                              "example": "Maharashtra"
+                            },
+                            "pc": {
+                              "type": "string",
+                              "example": 412765
+                            },
+                            "po": {
+                              "type": "string",
+                              "example": "Parvati"
+                            },
+                            "country": {
+                              "type": "string",
+                              "example": null
+                            }
+                          }
+                        },
+                        "pht": {
+                          "type": "array",
+                          "items": {
+                            "type": "object"
+                          }
+                        },
+                        "prn": {
+                          "type": "string",
+                          "example": null
+                        },
+                        "uid": {
+                          "type": "string",
+                          "example": null
+                        }
+                      }
+                    },
+                    "respCode": {
+                      "type": "string",
+                      "example": "00"
+                    },
+                    "respDesc": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "uidType": {
+                      "type": "string",
+                      "example": "A"
+                    },
+                    "txn": {
+                      "type": "string",
+                      "example": "txn"
+                    },
+                    "uidToken": {
+                      "type": "string",
+                      "example": "<uidToken>"
+                    },
+                    "communicationId": {
+                      "type": "string",
+                      "example": null
+                    },
+                    "rrn": {
+                      "type": "string",
+                      "example": 410417000056
+                    },
+                    "ttl": {
+                      "type": "string",
+                      "example": "<date with time>"
+                    }
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/components/Error/Internal"
+            }
+          }
+        }
+      }
+    },
+    "/assistedportalverifyaadharotpjwt": {
+      "post": {
+        "summary": "Verifies Aadhar OTP",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/assistedportalverifyaadharotpinfo"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "poi": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "example": "John Doe"
+                        },
+                        "dob": {
+                          "type": "string",
+                          "example": 1909
+                        },
+                        "gender": {
+                          "type": "string",
+                          "example": "M"
+                        }
+                      }
+                    },
+                    "poa": {
+                      "type": "object",
+                      "properties": {
+                        "co": {
+                          "type": "string",
+                          "example": null
+                        },
+                        "house": {
+                          "type": "string",
+                          "example": "Plot no 1001"
+                        },
+                        "vtc": {
+                          "type": "string",
+                          "example": "City"
+                        },
+                        "street": {
+                          "type": "string",
+                          "example": "Society"
+                        },
+                        "lm": {
+                          "type": "string",
+                          "example": "Road"
+                        },
+                        "lc": {
+                          "type": "string",
+                          "example": "Area"
+                        },
+                        "subdist": {
+                          "type": "string",
+                          "example": null
+                        },
+                        "dist": {
+                          "type": "string",
+                          "example": "Pune"
+                        },
+                        "state": {
+                          "type": "string",
+                          "example": "Maharashtra"
+                        },
+                        "pc": {
+                          "type": "string",
+                          "example": 412765
+                        },
+                        "po": {
+                          "type": "string",
+                          "example": "Parvati"
+                        },
+                        "country": {
+                          "type": "string",
+                          "example": null
+                        }
+                      }
+                    },
+                    "pht": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "prn": {
+                      "type": "string",
+                      "example": null
+                    },
+                    "uid": {
+                      "type": "string",
+                      "example": null
+                    },
+                    "access_token": {
+                      "type": "string",
+                      "example": "<access_token>"
+                    },
+                    "expires_in": {
+                      "type": "string",
+                      "example": "<timestamp>"
+                    },
+                    "id_token": {
+                      "type": "string",
+                      "example": "<id_token>"
+                    },
+                    "refresh_token": {
+                      "type": "string",
+                      "example": "<refresh_token>"
+                    },
+                    "scope": {
+                      "type": "string",
+                      "example": "openid"
+                    },
+                    "token_type": {
+                      "type": "string",
+                      "example": "bearer"
+                    }
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/components/Error/Internal"
+            }
+          }
+        }
+      }
+    },
+    "/verifydebitcard": {
+      "post": {
+        "summary": "Verifies Debit Card and PIN",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/verifydebitcard"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Perfect ! Your Customer ID is now verified."
+                    },
+                    "accounts": {
+                      "type": "object",
+                      "example": [
+                        "635302010013125",
+                        "317905010016826"
+                      ]
+                    }
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/components/Error/Internal"
+            }
+          }
+        }
+      }
+    },
+    "/verifydebitcard_v1": {
+      "post": {
+        "summary": "Verifies Debit Card and PIN",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/verifydebitcard"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Perfect ! Your Customer ID is now verified."
+                    },
+                    "accounts": {
+                      "type": "object",
+                      "example": [
+                        "635302010013125",
+                        "317905010016826"
+                      ]
+                    }
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/components/Error/Internal"
+            }
+          }
+        }
+      }
+    },
+    "/assistedportalgenerateotp": {
+      "post": {
+        "summary": "OTP Generation",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/assistedportalgenerateotp"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "mechanism": {
+                      "type": "string",
+                      "example": "urn:ibm:security:authentication:asf:mechanism:macotp"
+                    },
+                    "stateId": {
+                      "type": "string",
+                      "example": "ogVbOJy4V5TW59DMVnWH6mviOwBDGqqTsD131f2aSLIo6F1ChOXwzq95fEj4wUlxteINKGod1nJZO9qwNBa11RZkOdFnSToqQWl0wctm6CWuXj9fkjwaZ0KcUSf7pMpA\""
+                    },
+                    "location": {
+                      "type": "string",
+                      "example": "/mga/sps/apiauthsvc/policy/customMacOtp?StateId=ogVbOJy4V5TW59DMVnWH6mviOwBDGqqTsD131f2aSLIo6F1ChOXwzq95fEj4wUlxteINKGod1nJZO9qwNBa11RZkOdFnSToqQWl0wctm6CWuXj9fkjwaZ0KcUSf7pMpA"
+                    },
+                    "hint": {
+                      "type": "string",
+                      "example": 9810
+                    },
+                    "sentTo": {
+                      "type": "string",
+                      "example": "abc.test@ibm.com"
+                    },
+                    "mappingRuleData": {
+                      "type": "string",
+                      "example": ""
+                    }
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "exceptionMsg": {
+                  "type": "string",
+                  "example": "FBTOTP303E The one-time password cannot be delivered to null."
+                },
+                "state": {
+                  "type": "string",
+                  "example": ""
+                },
+                "message": {
+                  "type": "string",
+                  "example": "FBTOTP303E The one-time password cannot be delivered to null."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/assistedportalverifyotp": {
+      "post": {
+        "summary": "OTP Generation",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/assistedportalverifyotp1"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "string",
+                  "example": "Perfect ! Your Customer ID is now verified"
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "exceptionMsg": {
+                  "type": "string",
+                  "example": "FBTOTP303E The one-time password cannot be delivered to null."
+                },
+                "state": {
+                  "type": "string",
+                  "example": ""
+                },
+                "message": {
+                  "type": "string",
+                  "example": "FBTOTP303E The one-time password cannot be delivered to null."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/assistedportalstaffgenerateotp": {
+      "post": {
+        "summary": "OTP Generation",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/assistedportalgenerateotp"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "mechanism": {
+                      "type": "string",
+                      "example": "urn:ibm:security:authentication:asf:mechanism:macotp"
+                    },
+                    "stateId": {
+                      "type": "string",
+                      "example": "ogVbOJy4V5TW59DMVnWH6mviOwBDGqqTsD131f2aSLIo6F1ChOXwzq95fEj4wUlxteINKGod1nJZO9qwNBa11RZkOdFnSToqQWl0wctm6CWuXj9fkjwaZ0KcUSf7pMpA\""
+                    },
+                    "location": {
+                      "type": "string",
+                      "example": "/mga/sps/apiauthsvc/policy/customMacOtp?StateId=ogVbOJy4V5TW59DMVnWH6mviOwBDGqqTsD131f2aSLIo6F1ChOXwzq95fEj4wUlxteINKGod1nJZO9qwNBa11RZkOdFnSToqQWl0wctm6CWuXj9fkjwaZ0KcUSf7pMpA"
+                    },
+                    "hint": {
+                      "type": "string",
+                      "example": 9810
+                    },
+                    "sentTo": {
+                      "type": "string",
+                      "example": "abc.test@ibm.com"
+                    },
+                    "mappingRuleData": {
+                      "type": "string",
+                      "example": ""
+                    }
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "exceptionMsg": {
+                  "type": "string",
+                  "example": "FBTOTP303E The one-time password cannot be delivered to null."
+                },
+                "state": {
+                  "type": "string",
+                  "example": ""
+                },
+                "message": {
+                  "type": "string",
+                  "example": "FBTOTP303E The one-time password cannot be delivered to null."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/assistedportalstaffverifyotp": {
+      "post": {
+        "summary": "OTP Generation",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/assistedportalverifyotp1"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "example": "Perfect ! Your Customer ID is now verified"
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "exceptionMsg": {
+                  "type": "string",
+                  "example": "FBTOTP303E The one-time password cannot be delivered to null."
+                },
+                "state": {
+                  "type": "string",
+                  "example": ""
+                },
+                "message": {
+                  "type": "string",
+                  "example": "FBTOTP303E The one-time password cannot be delivered to null."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/assistedportalgenerateverifyotp": {
+      "post": {
+        "summary": "OTP Generation",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/assistedportalgenerateotp"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "mechanism": {
+                  "type": "string",
+                  "example": "urn:ibm:security:authentication:asf:mechanism:macotp"
+                },
+                "stateId": {
+                  "type": "string",
+                  "example": "ogVbOJy4V5TW59DMVnWH6mviOwBDGqqTsD131f2aSLIo6F1ChOXwzq95fEj4wUlxteINKGod1nJZO9qwNBa11RZkOdFnSToqQWl0wctm6CWuXj9fkjwaZ0KcUSf7pMpA\""
+                },
+                "location": {
+                  "type": "string",
+                  "example": "/mga/sps/apiauthsvc/policy/customMacOtp?StateId=ogVbOJy4V5TW59DMVnWH6mviOwBDGqqTsD131f2aSLIo6F1ChOXwzq95fEj4wUlxteINKGod1nJZO9qwNBa11RZkOdFnSToqQWl0wctm6CWuXj9fkjwaZ0KcUSf7pMpA"
+                },
+                "hint": {
+                  "type": "string",
+                  "example": 9810
+                },
+                "sentTo": {
+                  "type": "string",
+                  "example": "abc.test@ibm.com"
+                },
+                "mappingRuleData": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "exceptionMsg": {
+                  "type": "string",
+                  "example": "FBTOTP303E The one-time password cannot be delivered to null."
+                },
+                "state": {
+                  "type": "string",
+                  "example": ""
+                },
+                "message": {
+                  "type": "string",
+                  "example": "FBTOTP303E The one-time password cannot be delivered to null."
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "OTP Verification",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/assistedportalverifyotp"
+            }
+          },
+          {
+            "in": "query",
+            "name": "StateId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "exceptionMsg": {
+                  "type": "string",
+                  "example": "FBTAUT017E Authentication service received an invalid state ID [ePG0EHx9bc1dGgtXe2hRGYeg901VF6Fmp68MIobU0H5Gk6O6b7cboz4Ym9tUisgcFIQmC0jBO26iGECByUygaA5mL0z6xW8Pedwg7EitbilTwnnmBUxTGkc4WPXOOXJH]."
+                },
+                "state": {
+                  "type": "string",
+                  "example": ""
+                },
+                "message": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/assistedportalgenerateverifyotpjwt": {
+      "post": {
+        "summary": "OTP Generation",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/assistedportalgenerateotp"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "mechanism": {
+                  "type": "string",
+                  "example": "urn:ibm:security:authentication:asf:mechanism:macotp"
+                },
+                "stateId": {
+                  "type": "string",
+                  "example": "ogVbOJy4V5TW59DMVnWH6mviOwBDGqqTsD131f2aSLIo6F1ChOXwzq95fEj4wUlxteINKGod1nJZO9qwNBa11RZkOdFnSToqQWl0wctm6CWuXj9fkjwaZ0KcUSf7pMpA\""
+                },
+                "location": {
+                  "type": "string",
+                  "example": "/mga/sps/apiauthsvc/policy/customMacOtp?StateId=ogVbOJy4V5TW59DMVnWH6mviOwBDGqqTsD131f2aSLIo6F1ChOXwzq95fEj4wUlxteINKGod1nJZO9qwNBa11RZkOdFnSToqQWl0wctm6CWuXj9fkjwaZ0KcUSf7pMpA"
+                },
+                "hint": {
+                  "type": "string",
+                  "example": 9810
+                },
+                "sentTo": {
+                  "type": "string",
+                  "example": "abc.test@ibm.com"
+                },
+                "mappingRuleData": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "exceptionMsg": {
+                  "type": "string",
+                  "example": "FBTOTP303E The one-time password cannot be delivered to null."
+                },
+                "state": {
+                  "type": "string",
+                  "example": ""
+                },
+                "message": {
+                  "type": "string",
+                  "example": "FBTOTP303E The one-time password cannot be delivered to null."
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "OTP Verification",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/assistedportalverifyotp"
+            }
+          },
+          {
+            "in": "query",
+            "name": "StateId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "access_token": {
+                      "type": "string",
+                      "example": "<access_token>"
+                    },
+                    "expires_in": {
+                      "type": "string",
+                      "example": "<timestamp>"
+                    },
+                    "id_token": {
+                      "type": "string",
+                      "example": "<id_token>"
+                    },
+                    "refresh_token": {
+                      "type": "string",
+                      "example": "<refresh_token>"
+                    },
+                    "scope": {
+                      "type": "string",
+                      "example": "openid"
+                    },
+                    "token_type": {
+                      "type": "string",
+                      "example": "bearer"
+                    }
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "exceptionMsg": {
+                  "type": "string",
+                  "example": "FBTAUT017E Authentication service received an invalid state ID [ePG0EHx9bc1dGgtXe2hRGYeg901VF6Fmp68MIobU0H5Gk6O6b7cboz4Ym9tUisgcFIQmC0jBO26iGECByUygaA5mL0z6xW8Pedwg7EitbilTwnnmBUxTGkc4WPXOOXJH]."
+                },
+                "state": {
+                  "type": "string",
+                  "example": ""
+                },
+                "message": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/assistedportalverifyotpjwt": {
+      "post": {
+        "summary": "OTP Generation",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/assistedportalverifyotp1"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "access_token": {
+                      "type": "string",
+                      "example": "<access_token>"
+                    },
+                    "expires_in": {
+                      "type": "string",
+                      "example": "<timestamp>"
+                    },
+                    "refresh_token": {
+                      "type": "string",
+                      "example": "<refresh_token>"
+                    },
+                    "scope": {
+                      "type": "string",
+                      "example": "openid"
+                    },
+                    "token_type": {
+                      "type": "string",
+                      "example": "bearer"
+                    }
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "exceptionMsg": {
+                  "type": "string",
+                  "example": "FBTOTP303E The one-time password cannot be delivered to null."
+                },
+                "state": {
+                  "type": "string",
+                  "example": ""
+                },
+                "message": {
+                  "type": "string",
+                  "example": "FBTOTP303E The one-time password cannot be delivered to null."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/assistedportalgeneratemailotp": {
+      "post": {
+        "summary": "OTP Generation",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/assistedportalgenerateotp"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "mechanism": {
+                  "type": "string",
+                  "example": "urn:ibm:security:authentication:asf:mechanism:macotp"
+                },
+                "stateId": {
+                  "type": "string",
+                  "example": "ogVbOJy4V5TW59DMVnWH6mviOwBDGqqTsD131f2aSLIo6F1ChOXwzq95fEj4wUlxteINKGod1nJZO9qwNBa11RZkOdFnSToqQWl0wctm6CWuXj9fkjwaZ0KcUSf7pMpA\""
+                },
+                "location": {
+                  "type": "string",
+                  "example": "/mga/sps/apiauthsvc/policy/customMacOtp?StateId=ogVbOJy4V5TW59DMVnWH6mviOwBDGqqTsD131f2aSLIo6F1ChOXwzq95fEj4wUlxteINKGod1nJZO9qwNBa11RZkOdFnSToqQWl0wctm6CWuXj9fkjwaZ0KcUSf7pMpA"
+                },
+                "hint": {
+                  "type": "string",
+                  "example": 9810
+                },
+                "sentTo": {
+                  "type": "string",
+                  "example": "abc.test@ibm.com"
+                },
+                "mappingRuleData": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "exceptionMsg": {
+                  "type": "string",
+                  "example": "FBTOTP303E The one-time password cannot be delivered to null."
+                },
+                "state": {
+                  "type": "string",
+                  "example": ""
+                },
+                "message": {
+                  "type": "string",
+                  "example": "FBTOTP303E The one-time password cannot be delivered to null."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/assistedportalverifymailotp": {
+      "post": {
+        "summary": "OTP Verification",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/assistedportalverifymailotp"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "string",
+                  "example": "Perfect ! Your Customer ID is now verified"
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "exceptionMsg": {
+                  "type": "string",
+                  "example": "FBTOTP303E The one-time password cannot be delivered to null."
+                },
+                "state": {
+                  "type": "string",
+                  "example": ""
+                },
+                "message": {
+                  "type": "string",
+                  "example": "FBTOTP303E The one-time password cannot be delivered to null."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/assistedportalgenerateverifymailmacotp": {
+      "post": {
+        "summary": "OTP Generation",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/assistedportalgenerateotp"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "mechanism": {
+                  "type": "string",
+                  "example": "urn:ibm:security:authentication:asf:mechanism:macotp"
+                },
+                "stateId": {
+                  "type": "string",
+                  "example": "ogVbOJy4V5TW59DMVnWH6mviOwBDGqqTsD131f2aSLIo6F1ChOXwzq95fEj4wUlxteINKGod1nJZO9qwNBa11RZkOdFnSToqQWl0wctm6CWuXj9fkjwaZ0KcUSf7pMpA\""
+                },
+                "location": {
+                  "type": "string",
+                  "example": "/mga/sps/apiauthsvc/policy/customMacOtp?StateId=ogVbOJy4V5TW59DMVnWH6mviOwBDGqqTsD131f2aSLIo6F1ChOXwzq95fEj4wUlxteINKGod1nJZO9qwNBa11RZkOdFnSToqQWl0wctm6CWuXj9fkjwaZ0KcUSf7pMpA"
+                },
+                "hint": {
+                  "type": "string",
+                  "example": 9810
+                },
+                "sentTo": {
+                  "type": "string",
+                  "example": "abc.test@ibm.com"
+                },
+                "mappingRuleData": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "exceptionMsg": {
+                  "type": "string",
+                  "example": "FBTOTP303E The one-time password cannot be delivered to null."
+                },
+                "state": {
+                  "type": "string",
+                  "example": ""
+                },
+                "message": {
+                  "type": "string",
+                  "example": "FBTOTP303E The one-time password cannot be delivered to null."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/assistedportalaadharverifybiojwt": {
+      "post": {
+        "summary": "Verifies aadhar bio for assisted portal",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/assistedportalaadharverifybio"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "poi": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "example": "John Doe"
+                        },
+                        "dob": {
+                          "type": "string",
+                          "example": 1909
+                        },
+                        "gender": {
+                          "type": "string",
+                          "example": "M"
+                        }
+                      }
+                    },
+                    "poa": {
+                      "type": "object",
+                      "properties": {
+                        "co": {
+                          "type": "string",
+                          "example": null
+                        },
+                        "house": {
+                          "type": "string",
+                          "example": "Plot no 1001"
+                        },
+                        "vtc": {
+                          "type": "string",
+                          "example": "City"
+                        },
+                        "street": {
+                          "type": "string",
+                          "example": "Society"
+                        },
+                        "lm": {
+                          "type": "string",
+                          "example": "Road"
+                        },
+                        "lc": {
+                          "type": "string",
+                          "example": "Area"
+                        },
+                        "subdist": {
+                          "type": "string",
+                          "example": null
+                        },
+                        "dist": {
+                          "type": "string",
+                          "example": "Pune"
+                        },
+                        "state": {
+                          "type": "string",
+                          "example": "Maharashtra"
+                        },
+                        "pc": {
+                          "type": "string",
+                          "example": 412765
+                        },
+                        "po": {
+                          "type": "string",
+                          "example": "Parvati"
+                        },
+                        "country": {
+                          "type": "string",
+                          "example": null
+                        }
+                      }
+                    },
+                    "pht": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "prn": {
+                      "type": "string",
+                      "example": null
+                    },
+                    "uid": {
+                      "type": "string",
+                      "example": null
+                    },
+                    "access_token": {
+                      "type": "string",
+                      "example": "<access_token>"
+                    },
+                    "expires_in": {
+                      "type": "string",
+                      "example": "<timestamp>"
+                    },
+                    "id_token": {
+                      "type": "string",
+                      "example": "<id_token>"
+                    },
+                    "refresh_token": {
+                      "type": "string",
+                      "example": "<refresh_token>"
+                    },
+                    "scope": {
+                      "type": "string",
+                      "example": "openid"
+                    },
+                    "token_type": {
+                      "type": "string",
+                      "example": "bearer"
+                    }
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/components/Error/Internal"
+            }
+          }
+        }
+      }
+    },
+    "/assistedportalaadharverifybio": {
+      "post": {
+        "summary": "Verifies aadhar bio for assisted portal",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/assistedportalaadharverifybio"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "poi": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "example": "John Doe"
+                        },
+                        "dob": {
+                          "type": "string",
+                          "example": 1909
+                        },
+                        "gender": {
+                          "type": "string",
+                          "example": "M"
+                        }
+                      }
+                    },
+                    "poa": {
+                      "type": "object",
+                      "properties": {
+                        "co": {
+                          "type": "string",
+                          "example": null
+                        },
+                        "house": {
+                          "type": "string",
+                          "example": "Plot no 1001"
+                        },
+                        "vtc": {
+                          "type": "string",
+                          "example": "City"
+                        },
+                        "street": {
+                          "type": "string",
+                          "example": "Society"
+                        },
+                        "lm": {
+                          "type": "string",
+                          "example": "Road"
+                        },
+                        "lc": {
+                          "type": "string",
+                          "example": "Area"
+                        },
+                        "subdist": {
+                          "type": "string",
+                          "example": null
+                        },
+                        "dist": {
+                          "type": "string",
+                          "example": "Pune"
+                        },
+                        "state": {
+                          "type": "string",
+                          "example": "Maharashtra"
+                        },
+                        "pc": {
+                          "type": "string",
+                          "example": 412765
+                        },
+                        "po": {
+                          "type": "string",
+                          "example": "Parvati"
+                        },
+                        "country": {
+                          "type": "string",
+                          "example": null
+                        }
+                      }
+                    },
+                    "pht": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "prn": {
+                      "type": "string",
+                      "example": null
+                    },
+                    "uid": {
+                      "type": "string",
+                      "example": null
+                    }
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/components/Error/Internal"
+            }
+          }
+        }
+      }
+    },
+    "/assistedportalupdateuser": {
+      "post": {
+        "summary": "Assisted Portal Update User",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/assistedportalupdateuser"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "User updated successfully"
+                    }
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/components/Error/Internal"
+            }
+          }
+        }
+      }
+    },
+    "/verifytpin": {
+      "post": {
+        "summary": "Verify Tpin",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/verifytpin"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "access_token": {
+                      "type": "string",
+                      "example": "<access_token>"
+                    },
+                    "expires_in": {
+                      "type": "string",
+                      "example": "<timestamp>"
+                    },
+                    "id_token": {
+                      "type": "string",
+                      "example": "<id_token>"
+                    },
+                    "refresh_token": {
+                      "type": "string",
+                      "example": "<refresh_token>"
+                    },
+                    "scope": {
+                      "type": "string",
+                      "example": "openid"
+                    },
+                    "newScope": {
+                      "type": "string",
+                      "example": "tpin"
+                    },
+                    "token_type": {
+                      "type": "string",
+                      "example": "bearer"
+                    }
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error_code": {
+                  "type": "string",
+                  "example": "E30"
+                },
+                "errordesc": {
+                  "type": "string",
+                  "example": "Incorrect TPIN."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getallknowledgequestions": {
+      "get": {
+        "summary": "Get all knowledge questions",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "example": "Name of town where you were born?,Name of your pet?"
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          }
+        }
+      }
+    },
+    "/updateknowledgequestions": {
+      "post": {
+        "summary": "Updates knowledge questions",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/updateknowledgequestions"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Knowledge questions set successfully"
+                    }
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          }
+        }
+      }
+    },
+    "/getuserknowledgequestions": {
+      "post": {
+        "summary": "Gets user knowledge questions",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/getuserknowledgequestions"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "example": {
+                    "questions": [
+                      {
+                        "id": "2",
+                        "answer": "**********",
+                        "question": "Name of town where you were born?"
+                      },
+                      {
+                        "id": "1",
+                        "answer": "**********",
+                        "question": "Name of your pet?"
+                      }
+                    ],
+                    "username": 48799523
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          }
+        }
+      }
+    },
+    "/knowledgequestions": {
+      "post": {
+        "summary": "Validates user knowledge questions",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/knowledgequestions"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          }
+        }
+      }
+    },
+    "/corpRegistration": {
+      "post": {
+        "summary": "Validates user knowledge questions",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/corpRegistration"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "User registered successfully."
+                    }
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 201
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/components/Error/Internal"
+            }
+          }
+        }
+      }
+    },
+    "/corpUserLogin": {
+      "post": {
+        "summary": "Mobile Banking Login",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/corpUserLogin"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "access_token": {
+                      "type": "string",
+                      "example": "<access_token>"
+                    },
+                    "expires_in": {
+                      "type": "string",
+                      "example": "<timestamp>"
+                    },
+                    "refresh_token": {
+                      "type": "string",
+                      "example": "<refresh_token>"
+                    },
+                    "scope": {
+                      "type": "string",
+                      "example": "openid"
+                    },
+                    "token_type": {
+                      "type": "string",
+                      "example": "bearer"
+                    }
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/components/Error/Internal"
+            }
+          }
+        }
+      }
+    },
+    "/refrshtokenflow": {
+      "post": {
+        "summary": "Provides access token for refresh token",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/refrshtokenflow"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "access_token": {
+                      "type": "string",
+                      "example": "<access_token>"
+                    },
+                    "expires_in": {
+                      "type": "string",
+                      "example": "<timestamp>"
+                    },
+                    "id_token": {
+                      "type": "string",
+                      "example": "<id_token>"
+                    },
+                    "refresh_token": {
+                      "type": "string",
+                      "example": "<refresh_token>"
+                    },
+                    "scope": {
+                      "type": "string",
+                      "example": "openid"
+                    },
+                    "token_type": {
+                      "type": "string",
+                      "example": "bearer"
+                    }
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/components/Error/Bad"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "checkmbregistrationwithdeviceid": {
+      "properties": {
+        "deviceid": {
+          "type": "string",
+          "example": 49015420323751
+        },
+        "simdata": {
+          "type": "string",
+          "example": "12115|2|3"
+        }
+      },
+      "required": [
+        "deviceid",
+        "simdata"
+      ]
+    },
+    "verifycifexistence": {
+      "properties": {
+        "mobile": {
+          "type": "string",
+          "example": 9876543456
+        }
+      },
+      "required": [
+        "mobile"
+      ]
+    },
+    "generateaadharotp": {
+      "properties": {
+        "cif": {
+          "type": "string",
+          "example": 12345678
+        },
+        "aadharnumber": {
+          "type": "string",
+          "example": 123456789012
+        }
+      },
+      "required": [
+        "cif"
+      ]
+    },
+    "verifyaadharotp": {
+      "properties": {
+        "cif": {
+          "type": "string",
+          "example": 12345678
+        },
+        "aadharnumber": {
+          "type": "string",
+          "example": 123456789012
+        },
+        "aadharotp": {
+          "type": "string",
+          "example": 1234
+        },
+        "txn": {
+          "type": "string",
+          "example": 1200
+        },
+        "communicationId": {
+          "type": "string",
+          "example": "test"
+        },
+        "allowedfailure": {
+          "type": "integer",
+          "example": 3
+        },
+        "blockinghours": {
+          "type": "integer",
+          "example": 2
+        }
+      },
+      "required": [
+        "cif",
+        "aadharnumber",
+        "aadharotp",
+        "allowedfailure",
+        "blockinghours"
+      ]
+    },
+    "setloginpin": {
+      "properties": {
+        "cif": {
+          "type": "string",
+          "example": 12345678
+        },
+        "loginpin": {
+          "type": "string",
+          "example": 1234
+        },
+        "confirmloginpin": {
+          "type": "string",
+          "example": 1234
+        },
+        "loginpinhistorycount": {
+          "type": "integer",
+          "example": 3
+        },
+        "loginpinlength": {
+          "type": "integer",
+          "example": 4
+        },
+        "event": {
+          "type": "string",
+          "example": "registration"
+        }
+      },
+      "required": [
+        "cif",
+        "loginpin",
+        "confirmloginpin",
+        "loginpinhistorycount",
+        "loginpinlength"
+      ]
+    },
+    "verifyoldloginpin": {
+      "properties": {
+        "cif": {
+          "type": "string",
+          "example": 12345678
+        },
+        "event": {
+          "type": "string",
+          "example": "ExpiredLoginPin"
+        },
+        "oldloginpin": {
+          "type": "string",
+          "example": 2522
+        }
+      },
+      "required": [
+        "cif",
+        "event",
+        "oldloginpin"
+      ]
+    },
+    "settpin": {
+      "properties": {
+        "cif": {
+          "type": "string",
+          "example": 12345678
+        },
+        "tpin": {
+          "type": "string",
+          "example": 1234
+        },
+        "confirmtpin": {
+          "type": "string",
+          "example": 1234
+        },
+        "tpinhistorycount": {
+          "type": "integer",
+          "example": 3
+        },
+        "tpinlength": {
+          "type": "integer",
+          "example": 4
+        },
+        "event": {
+          "type": "string",
+          "example": "registration"
+        }
+      },
+      "required": [
+        "cif",
+        "tpin",
+        "confirmtpin",
+        "tpinhistorycount",
+        "tpinlength",
+        "event"
+      ]
+    },
+    "mblogin": {
+      "properties": {
+        "deviceid": {
+          "type": "string",
+          "example": 49015420323751
+        },
+        "simdata": {
+          "type": "string",
+          "example": "81cd66c2978888f5|0|1"
+        },
+        "loginpin": {
+          "type": "string",
+          "example": 1234
+        },
+        "allowedfailure": {
+          "type": "integer",
+          "example": 3
+        },
+        "loginpinexpiry": {
+          "type": "integer",
+          "example": 90
+        },
+        "loginwithbiometric": {
+          "type": "boolean",
+          "example": true
+        },
+        "blockinghrs": {
+          "type": "integer",
+          "example": 24
+        }
+      },
+      "required": [
+        "deviceid",
+        "simdata",
+        "loginpin",
+        "sessionexpiry",
+        "allowedfailure",
+        "loginpinexpiry",
+        "loginwithbiometric"
+      ]
+    },
+    "ibmoblogin": {
+      "properties": {
+        "deviceid": {
+          "type": "string",
+          "example": 49015420323751
+        },
+        "mobile": {
+          "type": "string",
+          "example": 9876543456
+        },
+        "sessionexpiry": {
+          "type": "integer",
+          "example": 30
+        },
+        "allowedfailure": {
+          "type": "integer",
+          "example": 3
+        },
+        "password": {
+          "type": "string",
+          "example": "Passw0rd"
+        }
+      },
+      "required": [
+        "deviceid",
+        "mobile",
+        "sessionexpiry",
+        "allowedfailure",
+        "password"
+      ]
+    },
+    "ibciflogin": {
+      "properties": {
+        "deviceid": {
+          "type": "string",
+          "example": 49015420323751
+        },
+        "cif": {
+          "type": "string",
+          "example": 12345678
+        },
+        "sessionexpiry": {
+          "type": "integer",
+          "example": 30
+        },
+        "allowedfailure": {
+          "type": "integer",
+          "example": 3
+        },
+        "password": {
+          "type": "string",
+          "example": "Passw0rd"
+        }
+      },
+      "required": [
+        "deviceid",
+        "cif",
+        "sessionexpiry",
+        "allowedfailure",
+        "password"
+      ]
+    },
+    "generateotp": {
+      "properties": {
+        "cif": {
+          "type": "string",
+          "example": 12345678
+        },
+        "mail": {
+          "type": "string",
+          "example": "test.user@ibm.com"
+        },
+        "mobile": {
+          "type": "string",
+          "example": 9256427706
+        }
+      },
+      "required": [
+        "cif",
+        "mail"
+      ]
+    },
+    "generatebranchtoken": {
+      "properties": {
+        "cif": {
+          "type": "string",
+          "example": 12345678
+        },
+        "mail": {
+          "type": "string",
+          "example": "test.user@ibm.com"
+        },
+        "reason": {
+          "type": "string",
+          "example": "mbregistration"
+        },
+        "mobile": {
+          "type": "string",
+          "example": 9876543210
+        }
+      },
+      "required": [
+        "cif",
+        "reason",
+        "mobile"
+      ]
+    },
+    "verifyotp": {
+      "properties": {
+        "cif": {
+          "type": "string",
+          "example": 12345678
+        },
+        "otp": {
+          "type": "string",
+          "example": 339489
+        },
+        "otphint": {
+          "type": "string",
+          "example": 9810
+        },
+        "id": {
+          "type": "string",
+          "example": "gVbOJy4V5TW59DMVnWH6mviOwBDGqqTsD131f2aSLIo6F1ChOXwzq95fEj4wUlxteINKGod1nJZO9qwNBa11RZkOdFnSToqQWl0wctm6CWuXj9fkjwaZ0KcUSf7pMpA"
+        },
+        "allowedfailure": {
+          "type": "string",
+          "example": 3
+        },
+        "blockinghours": {
+          "type": "string",
+          "example": 2
+        }
+      },
+      "required": [
+        "cif",
+        "otp",
+        "otphint",
+        "id",
+        "allowedfailure",
+        "blockinghours"
+      ]
+    },
+    "checkmbregistration": {
+      "properties": {
+        "mobile": {
+          "type": "string",
+          "example": 9087654321
+        },
+        "deviceid": {
+          "type": "string",
+          "example": 49015420323751
+        },
+        "simdata": {
+          "type": "string",
+          "example": "12115|2|3"
+        }
+      },
+      "required": [
+        "mobile",
+        "deviceid",
+        "simdata"
+      ]
+    },
+    "checkibregistration": {
+      "properties": {
+        "mobile": {
+          "type": "string",
+          "example": 9345634612
+        },
+        "deviceid": {
+          "type": "string",
+          "example": 124901542032375140
+        },
+        "cif": {
+          "type": "string",
+          "example": 12345678
+        }
+      },
+      "required": [
+        "mobile",
+        "deviceid",
+        "cif"
+      ]
+    },
+    "setpassword": {
+      "properties": {
+        "cif": {
+          "type": "string",
+          "example": 12345678
+        },
+        "password": {
+          "type": "string",
+          "example": "Passw0rd"
+        },
+        "confirmpassword": {
+          "type": "string",
+          "example": "Passw0rd"
+        },
+        "passwordpolicy": {
+          "type": "string",
+          "example": {}
+        }
+      },
+      "required": [
+        "cif",
+        "password",
+        "confirmpassword",
+        "passwordpolicy"
+      ]
+    },
+    "forgetusername": {
+      "properties": {
+        "cif": {
+          "type": "string",
+          "example": 12345678
+        },
+        "mobile": {
+          "type": "string",
+          "example": 9245363534
+        },
+        "accountnumber": {
+          "type": "string",
+          "example": 123456
+        }
+      },
+      "required": [
+        "cif",
+        "mobile",
+        "accountnumber"
+      ]
+    },
+    "mbregistration": {
+      "properties": {
+        "deviceid": {
+          "type": "string",
+          "example": 49015420323751
+        },
+        "mobile": {
+          "type": "string",
+          "example": 9245363534
+        },
+        "cif": {
+          "type": "string",
+          "example": 12345678
+        },
+        "simdata": {
+          "type": "string",
+          "example": "12115|2|3"
+        },
+        "mail": {
+          "type": "string",
+          "example": "test.user@ibm.com"
+        }
+      },
+      "required": [
+        "deviceid",
+        "mobile",
+        "cif",
+        "simdata"
+      ]
+    },
+    "ibregistration": {
+      "properties": {
+        "deviceid": {
+          "type": "string",
+          "example": 49015420323751
+        },
+        "mobile": {
+          "type": "string",
+          "example": 9245363534
+        },
+        "cif": {
+          "type": "string",
+          "example": 12345678
+        }
+      },
+      "required": [
+        "deviceid",
+        "mobile",
+        "cif"
+      ]
+    },
+    "ibreregistration": {
+      "properties": {
+        "deviceid": {
+          "type": "string",
+          "example": 49015420323751
+        },
+        "oldmobile": {
+          "type": "string",
+          "example": 9245363534
+        },
+        "newmobile": {
+          "type": "string",
+          "example": 9142434345
+        },
+        "cif": {
+          "type": "string",
+          "example": 12345678
+        }
+      },
+      "required": [
+        "deviceid",
+        "oldmobile",
+        "newmobile",
+        "cif"
+      ]
+    },
+    "mbsilentsmsgetstatus": {
+      "properties": {
+        "deviceid": {
+          "type": "string",
+          "example": "81cd66c2978888f5"
+        },
+        "simdata": {
+          "type": "string",
+          "example": "81cd66c2978888f5|0|1"
+        }
+      },
+      "required": [
+        "deviceid",
+        "simdata"
+      ]
+    },
+    "mbsilentsmsupdatestatus": {
+      "properties": {
+        "city": {
+          "type": "string",
+          "example": "Mumbai"
+        },
+        "leadDateTime": {
+          "type": "string",
+          "example": "2016-08-29T09:12:33.001Z"
+        },
+        "mobile": {
+          "type": "string",
+          "example": 9876543210
+        },
+        "smstext": {
+          "type": "string",
+          "example": "DBMRGT U2FsdGVkX1/NCVmIb1mDq/PwnJ5nofLDmK015Uk7fQBm61NgrACvXwbUeLUSfMS6pdDgr6tjISS6spWXRCLfn5Hf3/feEelpdYNcM+7Hk7Mw7R3x3Otm/OV5HOnPuUJj"
+        },
+        "sourceoperator": {
+          "type": "string",
+          "example": "jio"
+        }
+      },
+      "required": [
+        "mobile",
+        "deviceid",
+        "simdata",
+        "city",
+        "leadDateTime",
+        "sourceoperator"
+      ]
+    },
+    "validatejwt": {
+      "properties": {
+        "token": {
+          "type": "string",
+          "example": "eyJhbGciOiJSUzI1NiIsImtpZCI6Imh0dHBzZXJ2ZXJrZXkiLCJ0eXAiOiJhdCtqd3QifQ.eyJhdWQiOlsiY2xpZW50X3JvcGMiXSwiY2xpZW50X2lkIjoiY2xpZW50X3JvcGMiLCJleHAiOjE3MDQzNzA5NjQsImdyYW50X2lkIjoiODJmNDYzYzItY2JlMC00Zjg4LWFmYzgtNDU1MDE3OTJjMGU5IiwiZ3JvdXBzIjpbInN1cHBvcnQiLCJ1c2VyIl0sImlhdCI6MTcwNDM2Mzc2MywiaXNzIjoiaHR0cHM6Ly9pYW1sYWIuYXBwcy51YmlkZXYuaWJtdWJpLmxvY2FsIiwianRpIjoiMzE2OWZkOTEtMTAwZS00ZGYzLTliN2ItNjk3ODkyOWVhMzg3IiwibmJmIjoxNzA0MzYzNzYzLCJzY29wZSI6Im9wZW5pZCIsInN1YiI6IjEyMTIxMiJ9.kFKBdxzNX0EJZzpXFVrV_JrPoMlZAYAjmUKwlxRZTrSXHJrLyrYZ6pFhZGKM-MndYQBGD3VQPU5JR19iIqX8RFOKonKd7Db9XFTbCmupncK7mincyVbDfUIWPJ5-TrO5CL3MYV_9Wb_AnjchV6nJD__IYG6jVCtsVHbh6TtJwRW5CPyKGJ147q1NYeV33xKTp5_OEHOGou_E-sCvxuKOwEmabkAC2telqUWp5adljd7be8WeJ49VTBCJUHe9QBp9p1k5fZM-vj9GkzNuXHRqFRjIYNy8NZ1oKyYWitmljaBPHP7h3Pd-xlfkn2-ON8ulkqgVqoNoj2MRMK1sssEo0w"
+        }
+      },
+      "required": [
+        "token"
+      ]
+    },
+    "fetchcifbymobile": {
+      "properties": {
+        "mobile": {
+          "type": "string",
+          "example": 9245363534
+        }
+      },
+      "required": [
+        "mobile"
+      ]
+    },
+    "verifybranchtoken": {
+      "properties": {
+        "otp": {
+          "type": "string",
+          "example": 8917
+        },
+        "cif": {
+          "type": "string",
+          "example": 12345678
+        },
+        "event": {
+          "type": "string",
+          "example": "registration"
+        },
+        "allowedfailure": {
+          "type": "integer",
+          "example": 3
+        },
+        "blockinghours": {
+          "type": "integer",
+          "example": 2
+        }
+      },
+      "required": [
+        "otp",
+        "cif",
+        "allowedfailure",
+        "blockinghours"
+      ]
+    },
+    "assistedportalstafflogin": {
+      "properties": {
+        "username": {
+          "type": "string",
+          "example": 345678
+        },
+        "password": {
+          "type": "string",
+          "example": "Ubi1234"
+        }
+      },
+      "required": [
+        "username",
+        "password"
+      ]
+    },
+    "assistedportalgenerateaadharotp": {
+      "properties": {
+        "aadharnumber": {
+          "type": "string",
+          "example": 123456789012
+        }
+      },
+      "required": [
+        "aadharnumber"
+      ]
+    },
+    "assistedportalverifyaadharotp": {
+      "properties": {
+        "aadharnumber": {
+          "type": "string",
+          "example": 123456789012
+        },
+        "aadharotp": {
+          "type": "string",
+          "example": 123456
+        },
+        "txn": {
+          "type": "string",
+          "example": 1200
+        },
+        "communicationId": {
+          "type": "string",
+          "example": "test"
+        }
+      },
+      "required": [
+        "aadharnumber",
+        "aadharotp",
+        "txn",
+        "communicationId"
+      ]
+    },
+    "assistedportalverifyaadharotpinfo": {
+      "properties": {
+        "aadharnumber": {
+          "type": "string",
+          "example": 123456789012
+        },
+        "aadharotp": {
+          "type": "string",
+          "example": 123456
+        },
+        "mobile": {
+          "type": "string",
+          "example": 1234567890
+        },
+        "txn": {
+          "type": "string",
+          "example": 1200
+        },
+        "communicationId": {
+          "type": "string",
+          "example": "test"
+        }
+      },
+      "required": [
+        "aadharnumber",
+        "aadharotp",
+        "txn",
+        "communicationId"
+      ]
+    },
+    "verifydebitcard": {
+      "properties": {
+        "cif": {
+          "type": "string",
+          "example": 12345678
+        },
+        "transRefNum": {
+          "type": "string",
+          "example": 202401180001
+        },
+        "cardNum": {
+          "type": "string",
+          "example": 4317335194000188
+        },
+        "cardExpiry": {
+          "type": "string",
+          "example": 1224
+        },
+        "pin": {
+          "type": "string",
+          "example": 4317
+        },
+        "allowedfailure": {
+          "type": "integer",
+          "example": 3
+        },
+        "blockinghours": {
+          "type": "integer",
+          "example": 2
+        }
+      },
+      "required": [
+        "cif",
+        "transRefNum",
+        "cardNum",
+        "cardExpiry",
+        "pin",
+        "allowedfailure",
+        "blockinghours"
+      ]
+    },
+    "assistedportaljwt": {
+      "properties": {
+        "MobileNumber": {
+          "type": "string",
+          "example": 9876543210
+        }
+      },
+      "required": [
+        "mail",
+        "MobileNumber"
+      ]
+    },
+    "assistedportalgenerateotp": {
+      "properties": {
+        "mail": {
+          "type": "string",
+          "example": "test.user@ibm.com"
+        },
+        "MobileNumber": {
+          "type": "string",
+          "example": 9876543210
+        }
+      },
+      "required": [
+        "mail",
+        "MobileNumber"
+      ]
+    },
+    "assistedportalverifyotp": {
+      "properties": {
+        "otp.user.otp-hint": {
+          "type": "string",
+          "example": 8917
+        },
+        "otp.user.otp": {
+          "type": "string",
+          "example": 339489
+        },
+        "firstname": {
+          "type": "string",
+          "example": 339489
+        },
+        "lastname": {
+          "type": "string",
+          "example": 339489
+        },
+        "mobile": {
+          "type": "string",
+          "example": 9987659302
+        }
+      },
+      "required": [
+        "otp.user.otp-hint",
+        "otp.user.otp",
+        "mobile"
+      ]
+    },
+    "assistedportalverifyotp1": {
+      "properties": {
+        "otphint": {
+          "type": "string",
+          "example": 8917
+        },
+        "otp": {
+          "type": "string",
+          "example": 339489
+        },
+        "mobile": {
+          "type": "string",
+          "example": 339489
+        },
+        "firstname": {
+          "type": "string",
+          "example": 339489
+        },
+        "lastname": {
+          "type": "string",
+          "example": 9987659302
+        },
+        "id": {
+          "type": "string",
+          "example": "oIYPoJERui7riBEuK496xd8Y9dF9r139B9dCneOvWGZSLYlCGMzFx7zeTqdAPEJZJMFbCMccPhIfWQzBkWfueb7iybNMBKCS8Jsf4gcKA508q21IJ25AEMzEaMqPIKov"
+        }
+      },
+      "required": [
+        "otp.user.otp-hint",
+        "otp.user.otp",
+        "mobile"
+      ]
+    },
+    "assistedportalverifymailotp": {
+      "properties": {
+        "otphint": {
+          "type": "string",
+          "example": 8917
+        },
+        "otp": {
+          "type": "string",
+          "example": 339489
+        },
+        "id": {
+          "type": "string",
+          "example": "oIYPoJERui7riBEuK496xd8Y9dF9r139B9dCneOvWGZSLYlCGMzFx7zeTqdAPEJZJMFbCMccPhIfWQzBkWfueb7iybNMBKCS8Jsf4gcKA508q21IJ25AEMzEaMqPIKov"
+        },
+        "mail": {
+          "type": "string",
+          "example": "test.user@ibm.com"
+        }
+      },
+      "required": [
+        "otp.user.otp-hint",
+        "otp.user.otp",
+        "mobile"
+      ]
+    },
+    "assistedportalaadharverifybio": {
+      "properties": {
+        "mobile": {
+          "type": "string",
+          "example": 9876543210
+        },
+        "uid": {
+          "type": "string",
+          "example": 9876543210
+        },
+        "bt": {
+          "type": "string",
+          "example": 9876543210
+        },
+        "rdsId": {
+          "type": "string",
+          "example": 9876543210
+        },
+        "rdsVer": {
+          "type": "string",
+          "example": 9876543210
+        },
+        "dpId": {
+          "type": "string",
+          "example": 9876543210
+        },
+        "dc": {
+          "type": "string",
+          "example": 9876543210
+        },
+        "mi": {
+          "type": "string",
+          "example": 9876543210
+        },
+        "mc": {
+          "type": "string",
+          "example": 9876543210
+        },
+        "communicationId": {
+          "type": "string",
+          "example": 9876543210
+        },
+        "consent": {
+          "type": "string",
+          "example": 9876543210
+        },
+        "dih": {
+          "type": "string",
+          "example": 9876543210
+        },
+        "bio": {
+          "type": "string",
+          "example": 9876543210
+        },
+        "hmac": {
+          "type": "string",
+          "example": 9876543210
+        },
+        "skey": {
+          "type": "string",
+          "example": 9876543210
+        }
+      },
+      "required": [
+        "mail"
+      ]
+    },
+    "mbreregistration": {
+      "properties": {
+        "cif": {
+          "type": "string",
+          "example": 12345678
+        }
+      },
+      "required": [
+        "cif"
+      ]
+    },
+    "assistedportalupdateuser": {
+      "properties": {
+        "mobile": {
+          "type": "string",
+          "example": 9608961234
+        },
+        "firstname": {
+          "type": "string",
+          "example": "john"
+        },
+        "lastname": {
+          "type": "string",
+          "example": "doe"
+        }
+      },
+      "required": [
+        "deviceid",
+        "mobile",
+        "firstname",
+        "lastname"
+      ]
+    },
+    "verifytpin": {
+      "properties": {
+        "cif": {
+          "type": "string",
+          "example": 891745900
+        },
+        "tpin": {
+          "type": "string",
+          "example": 9608961234
+        },
+        "refreshtoken": {
+          "type": "string",
+          "example": "u4EymFZOUTn3higW7WT20nAdXoE2Pf5ISCn0mG2vFlU.E_MBkAaQ2HXclrw8JrJ2ME0wb0Q0_5O3QtXzl_41fG4mcRdpSaRy6iqWlBYjrs3p2Qz20EThy3ETzmbqLXFAZA"
+        }
+      },
+      "required": [
+        "cif",
+        "tpin"
+      ]
+    },
+    "updateknowledgequestions": {
+      "properties": {
+        "cif": {
+          "type": "string",
+          "example": 891745900
+        },
+        "questions": {
+          "type": "object",
+          "example": [
+            {
+              "id": "1",
+              "answer": "tommy",
+              "question": "Name of your pet?"
+            },
+            {
+              "id": "2",
+              "answer": "pune",
+              "question": "Name of town where you were born?"
+            }
+          ]
+        }
+      },
+      "required": [
+        "cif",
+        "questions"
+      ]
+    },
+    "getuserknowledgequestions": {
+      "properties": {
+        "cif": {
+          "type": "string",
+          "example": 891745900
+        }
+      },
+      "required": [
+        "cif"
+      ]
+    },
+    "knowledgequestions": {
+      "properties": {
+        "knowledge.question.answer.0": {
+          "type": "string",
+          "example": "pune"
+        },
+        "knowledge.question.unique.id.0": {
+          "type": "string",
+          "example": 2
+        },
+        "knowledge.question.answer.1": {
+          "type": "string",
+          "example": "tommy"
+        },
+        "knowledge.question.unique.id.1": {
+          "type": "string",
+          "example": 2
+        },
+        "knowledge.questions.count": {
+          "type": "string",
+          "example": 2
+        },
+        "cif": {
+          "type": "string",
+          "example": 48799523
+        },
+        "operation": {
+          "type": "string",
+          "example": "verify"
+        }
+      },
+      "required": [
+        "cif",
+        "knowledge.question.answer.0",
+        "knowledge.question.unique.id.0",
+        "knowledge.question.answer.1",
+        "knowledge.question.unique.id.1",
+        "knowledge.questions.count",
+        "operation"
+      ]
+    },
+    "corpRegistration": {
+      "properties": {
+        "username": {
+          "type": "string",
+          "example": "adani"
+        },
+        "corpname": {
+          "type": "string",
+          "example": "adani"
+        },
+        "mail": {
+          "type": "string",
+          "example": "adani@demo.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "Passw0rd"
+        }
+      },
+      "required": [
+        "username",
+        "corpname",
+        "mail",
+        "password"
+      ]
+    },
+    "corpUserLogin": {
+      "properties": {
+        "username": {
+          "type": "string",
+          "example": "adani"
+        },
+        "password": {
+          "type": "string",
+          "example": "Passw0rd"
+        }
+      },
+      "required": [
+        "username",
+        "password"
+      ]
+    },
+    "refrshtokenflow": {
+      "properties": {
+        "cif": {
+          "type": "string",
+          "example": 891745900
+        },
+        "refreshtoken": {
+          "type": "string",
+          "example": "u4EymFZOUTn3higW7WT20nAdXoE2Pf5ISCn0mG2vFlU.E_MBkAaQ2HXclrw8JrJ2ME0wb0Q0_5O3QtXzl_41fG4mcRdpSaRy6iqWlBYjrs3p2Qz20EThy3ETzmbqLXFAZA"
+        }
+      },
+      "required": [
+        "cif"
+      ]
+    }
+  },
+  "components": {
+    "Error": {
+      "Bad": {
+        "type": "object",
+        "properties": {
+          "error_code": {
+            "type": "string",
+            "example": "custom error code"
+          },
+          "errordesc": {
+            "type": "string",
+            "example": "custom error message"
+          }
+        }
+      },
+      "Internal": {
+        "type": "object",
+        "properties": {
+          "error_code": {
+            "type": "string",
+            "example": "E01"
+          },
+          "errordesc": {
+            "type": "string",
+            "example": "Error Ocurred"
+          }
+        }
+      },
+      "Unauthorized": {
+        "type": "object",
+        "properties": {
+          "error_code": {
+            "type": "string",
+            "example": "custom error code"
+          },
+          "errordesc": {
+            "type": "string",
+            "example": "custom error message"
+          }
+        }
+      },
+      "Forbidden": {
+        "type": "object",
+        "properties": {
+          "error_code": {
+            "type": "string",
+            "example": "custom error code"
+          },
+          "errordesc": {
+            "type": "string",
+            "example": "custom error message"
+          }
+        }
+      },
+      "Not Found": {
+        "type": "object",
+        "properties": {
+          "error_code": {
+            "type": "string",
+            "example": "custom error code"
+          },
+          "errordesc": {
+            "type": "string",
+            "example": "custom error message"
+          }
+        }
+      },
+      "Conflict": {
+        "type": "object",
+        "properties": {
+          "error_code": {
+            "type": "string",
+            "example": "custom error code"
+          },
+          "errordesc": {
+            "type": "string",
+            "example": "custom error message"
+          }
+        }
+      }
+    }
+  }
+}
