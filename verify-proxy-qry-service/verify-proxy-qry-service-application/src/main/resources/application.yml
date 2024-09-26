@@ -1,0 +1,18 @@
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
+verify:
+  proxy:
+    qry:
+#       baseUrl: http://gw-ibm-verify-service.biz-common-dev.svc.cluster.local:8080
+       baseUrl: https://iamlab.apps.nprd.ubidp.local
+       generateOtpEndpoint: /mga/sps/apiauthsvc/policy/generateotp
+       verifyOtpEndpoint: /mga/sps/apiauthsvc/policy/verifyotp
+       corpUserLoginEndpoint: /mga/sps/apiauthsvc/policy/corpUserLogin
+       getSecurityQuestionByCif: /mga/sps/apiauthsvc/policy/getuserknowledgequestions
+       knowledgeQuestions: /mga/sps/apiauthsvc/policy/getallknowledgequestions
+       validateKnowledgeQuestions: /mga/sps/apiauthsvc/policy/knowledgequestions
+       verifyOldLoginMpinEndpoint: /mga/sps/apiauthsvc/policy/verifyoldloginpin
+       verifyTpinEndpoint: /mga/sps/apiauthsvc/policy/verifytpin
+       checkMbRegistration: /mga/sps/apiauthsvc/policy/checkmbregistration

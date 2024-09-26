@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.ubi.dbp.proxy.loginregistration.service</groupId>
+    <artifactId>verify-proxy-qry-service</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    
+
+    <properties>
+    	<java.version>17</java.version>
+	    <compiler-plugin.version>3.11.0</compiler-plugin.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+	    <maven.compiler.release>17</maven.compiler.release>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+         <maven-source-plugin.version>3.3.0</maven-source-plugin.version>
+		<compiler.fork>true</compiler.fork>
+		<surefire-plugin.version>3.0.0-M7</surefire-plugin.version>
+    </properties>
+	<modules>
+        <module>verify-proxy-qry-service-application</module>
+        <module>verify-proxy-qry-service-model</module>
+    </modules>
+	<dependencyManagement>
+        <dependencies>
+		   <!-- Dependency from parent-bom -->
+		    <dependency>
+				<groupId>dbp.framework</groupId>
+				<artifactId>parent-bom</artifactId>
+				<version>${project.version}</version>
+				<type>pom</type>
+                <scope>import</scope>
+            </dependency>
+		   <!-- Dependency from dbp-spring-bom -->
+		    <dependency>
+				<groupId>dbp.framework</groupId>
+				<artifactId>dbp-spring-bom</artifactId>
+				<version>${project.version}</version>
+				<type>pom</type>
+                <scope>import</scope>
+            </dependency>
+			
+		
+		   <!-- spring-boot-dependencies -->
+		   <!--
+		    <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>3.1.4</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+			-->
+			<dependency>
+				<groupId>com.ubi.dbp.proxy.loginregistration.service</groupId>
+        		<artifactId>verify-proxy-qry-service-model</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+		
+        </dependencies>
+    </dependencyManagement>
+    
+	<dependencies>
+		<dependency>
+			<groupId>dbp.framework</groupId>
+			<artifactId>support</artifactId>
+		</dependency>   
+		<dependency>
+	        <groupId>org.slf4j</groupId>
+	        <artifactId>slf4j-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<!--
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-logging</artifactId>
+		</dependency>
+		-->
+	</dependencies>	
+	<repositories>
+		<repository>
+			<id>nexus-snapshot</id>
+			<name>nexus-snapshot</name>
+			<url>http://172.29.32.15:8081/repository/maven-snapshots/</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+		</repository>
+	</repositories>	
+	
+	<distributionManagement>
+		<repository>
+				<id>nexus-releases</id>
+				<name>Releases</name>
+				<url>http://172.29.32.15:8081/repository/maven-releases</url>
+		</repository>	
+	   <snapshotRepository>
+		  <id>nexus-snapshot</id>
+		  <url>http://172.29.32.15:8081/repository/maven-snapshots</url>
+	   </snapshotRepository>
+	</distributionManagement>
+	
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${compiler-plugin.version}</version> 
+					<configuration>
+						<source>${maven.compiler.source>}</source>
+						<target>${maven.compiler.source>}</target>
+						
+					</configuration>
+				</plugin>
+				
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>${maven-source-plugin.version}</version> 
+					<executions>
+						<execution>
+							<id>attach-sources</id>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+			   </plugin>				
+				<!--
+			<plugin>
+				<groupId>org.jetbrains.kotlin</groupId>
+				<artifactId>kotlin-maven-plugin</artifactId>
+				<version>${kotlin.version}</version>
+			</plugin>
+			<plugin>
+				<groupId>org.jooq</groupId>
+				<artifactId>jooq-codegen-maven</artifactId>
+				<version>${jooq.version}</version>
+			</plugin>
+							-->
+			<plugin>
+			<artifactId>maven-surefire-plugin</artifactId>
+			<version>${surefire-plugin.version}</version>
+			<configuration>
+			  <systemPropertyVariables>
+				<java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
+				<maven.home>${maven.home}</maven.home>
+			  </systemPropertyVariables>
+			</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-failsafe-plugin</artifactId>
+			<version>${surefire-plugin.version}</version>
+			<executions>
+			  <execution>
+				<goals>
+				  <goal>integration-test</goal>
+				  <goal>verify</goal>
+				</goals>
+				<configuration>
+				  <systemPropertyVariables>
+					<native.image.path>${project.build.directory}/${project.build.finalName}-runner
+					</native.image.path>
+					<java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
+					<maven.home>${maven.home}</maven.home>
+				  </systemPropertyVariables>
+				</configuration>
+			  </execution>
+			</executions>
+			</plugin>							
+							
+						
+			</plugins>
+		</pluginManagement>
+		
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+		   </plugin>		
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+		   </plugin>		
+		</plugins>
+	</build>	
+	
+</project>
