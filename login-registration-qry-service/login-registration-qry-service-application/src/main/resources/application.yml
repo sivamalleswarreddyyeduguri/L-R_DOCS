@@ -1,0 +1,71 @@
+logging:
+    level:
+        org:
+            springframework:
+                web: DEBUG
+springdoc:
+ swagger-ui:
+  path: /swagger.html
+
+spring:
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+  codec:
+    max-in-memory-size: 5MB
+#cassandra-configuration
+#  data:
+#    cassandra:
+#      contact-points: 172.29.24.144
+#      keyspace-name: conf_investment
+#      password: cassandra
+#      port: 9042
+#      username: cassandra
+#      local-datacenter: bangaloredc1
+
+customer:
+  baseUrl: http://cust-acct-qry-svc.biz-customer-dev.svc.cluster.local:8080
+#  baseUrl: https://cust-acct-qry-svc-biz-customer-dev.apps.nprd.ubidp.local
+
+  paths:
+    custInqByMob: /customer/api/v1/custInqByMob/
+    getCustomerAcctsByCIF: /customer/accounts/api/v1/getCustomerAccounts
+    getCustomerByCIF: /customer/api/v1/getCustomerByCIF/
+
+  accountStatus: A
+
+config:
+  service:
+    configBaseURL: http://config-qry-svc.biz-common-dev.svc.cluster.local:8080/config
+    #configBaseURL: https://config-qry-svc-biz-common-dev.apps.nprd.ubidp.local/config
+
+    fetchBusinessRules: /fetchBusinessRules
+
+aadhaar:
+   proxy:
+     baseUrl: http://aadhaar-ekyc-service.proxy-aadhaar-dev.svc.cluster.local:8080
+#     baseUrl: https://adhaar-ekyc-service-proxy-aadhaar-dev.apps.nprd.ubidp.local
+     paths:
+       generateOtp: /api/v1/aadhaar/generateOtp
+       validateOtp: /api/v1/aadhaar/validateOtp
+
+atmSwitch:
+  proxy:
+    baseUrl: http://atmswitch-debit-card-service.proxy-card-services-dev.svc.cluster.local:8080
+    #baseUrl: https://atmswitch-debit-card-service-proxy-card-services-dev.apps.nprd.ubidp.local
+    paths:
+      verifyDebit: /proxy/v1/atmswitch/verifyCard
+
+verify:
+  proxy:
+    baseUrl: http://verify-proxy-qry-service.biz-login-registration-dev.svc.cluster.local:8080
+    #    baseUrl: https://verify-proxy-qry-service-biz-login-registration-dev.apps.nprd.ubidp.local
+    paths:
+      securityQuestions: /verify-proxy/api/v1/get-security-questions
+      corpUserLogin: /verify-proxy/api/v1/corpUserLogin
+      generateOtpEndpoint: /verify-proxy/api/v1/generateotp
+      verifyOtpEndpoint: /verify-proxy/api/v1/verifyotp
+      knowledgeQuestions: /verify-proxy/api/v1/get-all-knowledge-questions
+      verifyOldLoginMpinEndpoint: /verify-proxy/api/v1/verifyoldloginpin
+      verifyTpinEndpoint: /verify-proxy/api/v1/verifytpin
+      checkMbRegistration: /verify-proxy/api/v1/checkMbRegistration
