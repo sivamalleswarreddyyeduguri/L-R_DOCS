@@ -1,0 +1,22 @@
+logging:
+    level:
+        org:
+            springframework:
+                web: DEBUG
+
+spring:
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+  codec:
+    max-in-memory-size: 5MB
+
+verify:
+  proxy:
+    baseUrl: http://verify-proxy-cmd-service.biz-login-registration-dev.svc.cluster.local:8080
+#    baseUrl: https://verify-proxy-cmd-service-biz-login-registration-dev.apps.nprd.ubidp.local
+    setMpinEndpoint: /verify-proxy/api/v1/user/mpin
+    setTpinEndpoint: /verify-proxy/api/v1/user/tpin
+    mbRegistration: /verify-proxy/api/v1/user/mbregistration
+    securityQuestions: /verify-proxy/api/v1/user/security-question
+    password: /verify-proxy/api/v1/user/password
