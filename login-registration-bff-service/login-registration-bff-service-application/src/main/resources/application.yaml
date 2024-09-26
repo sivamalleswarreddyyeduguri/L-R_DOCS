@@ -1,0 +1,69 @@
+apicurio:
+    registry:
+        url: ${REGISTRY_HOST:http://apicurioregistry-dev-service.apicurio-registry.svc.cluster.local:8080/apis/registry/v2}
+logging:
+    level:
+        org:
+            springframework:
+                web: DEBUG
+springdoc:
+ swagger-ui:
+  path: /swagger.html
+  
+spring:
+    jackson:
+        serialization:
+            write-dates-as-timestamps: false
+    codec:
+        max-in-memory-size: 5MB
+
+aes-encryption:
+  web-filter:
+    disabled: true
+    
+web-filter:
+  jwtvalidator:
+    disabled: true
+
+
+loginRegistration:
+  cache:
+    put:
+      url: ${INVST_CACHE_PUT:http://cache-svc.biz-common-dev.svc.cluster.local:8080/cache/##CACHE_NAME##/put-val}
+      #url: https://cache-svc-biz-common-dev.apps.nprd.ubidp.local/cache/##CACHE_NAME##/put-val
+    get:
+      url: ${INVST_CACHE_GET:http://cache-svc.biz-common-dev.svc.cluster.local:8080/cache/##CACHE_NAME##/##KEY##}
+    #      url: https://cache-svc-biz-common-dev.apps.nprd.ubidp.local/cache/##CACHE_NAME##/##KEY##
+    name: investments-cache
+  path:
+    tnc: TnCDocument/L&R_TandC.pdf
+  query:
+    service:
+      base:
+        url: http://login-registration-qry-service.biz-login-registration-dev.svc.cluster.local:8080
+#        url: https://login-registration-qry-service-biz-login-registration-dev.apps.nprd.ubidp.local
+      paths:
+        verifyMobile: /login-registration/api/v1/register/verify-mobile
+        generateOtp: /login-registration/api/v1/generate-otp
+        validateOtp: /login-registration/api/v1/validate-otp
+        verifyDebitCard: /login-registration/api/v1/verifyDebitCard
+        securityQuestions: /login-registration/api/v1/get-security-questions
+        corpLogin: /login-registration/api/v1/corpLogin
+        verifyTpinOtp: /login-registration/api/v1/verifyotp
+        generateTpinOtp: /login-registration/api/v1/generateotp
+        knowledgeQuestions: /login-registration/api/v1/get-all-knowledge-questions
+        verifyOldLoginMpinEndpoint: /login-registration/api/v1/verifyoldloginpin
+        verifyTpinEndpoint: /login-registration/api/v1/verifytpin
+        checkMbRegistration: /login-registration/api/v1/checkMbRegistration
+
+  command:
+    service:
+      base:
+        url: http://login-registration-cmd-service.biz-login-registration-dev.svc.cluster.local:8080
+      #        url: https://login-registration-cmd-service-biz-login-registration-dev.apps.nprd.ubidp.local
+      path: /login-registration/api/v1
+      settpin: /tpin
+      setmpin: /mpin
+      securityQuestions: /security-question
+      password: /password
+      mbRegistration: /register/user

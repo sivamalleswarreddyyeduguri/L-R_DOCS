@@ -1,0 +1,74 @@
+#apicurio:
+#    registry:
+#        url: ${REGISTRY_HOST:http://apicurioregistry-dev-service.apicurio-registry.svc.cluster.local:8080/apis/registry/v2}
+#logging:
+#    level:
+#        org:
+#            springframework:
+#                web: DEBUG
+#springdoc:
+# swagger-ui:
+#  path: /swagger.html
+#
+#spring:
+#    jackson:
+#        serialization:
+#            write-dates-as-timestamps: false
+#    codec:
+#        max-in-memory-size: 5MB
+#ssa:
+#    path:
+#        tnc: TnCDocument/SSA_TandC.pdf
+#    query:
+#        service:
+#            base:
+#                url: ${SSA_QUERY:http://ssa-qry-svc.biz-investment-dev.svc.cluster.local:8080}
+#            investment:
+#                path: /ssa/api/v1       
+#            ssa:
+#                download:
+#                    email: /emailStatement
+#                    statement: /downloadSSAStatement
+#                status: /getSSAStatus
+#                transaction: /getSSATransactions
+#                certificate: /SSACertificate
+#                accountDetails: /getSSAAccountDetails
+#                acknowledgement: /DownloadAcknowledgementLetter
+#                detailsToResume: /getSSADetailsToResume
+#                existingAccts: /checkExistingAcct
+#                investmentAccounts: /getSsaInvestmentAccounts
+#                paymentStatus: /getPaymentStatus
+#                validateAmount: /validateContribution
+#    command:    
+#        service:
+#            base:
+#                url: ${SSA_CMD:http://ssa-command-service.biz-investment-dev.svc.cluster.local:8080}
+#            investment:
+#                path: /investment/ssa/api/v1
+#            ssa: 
+#                save: /save
+#                open: /open
+#                contribution : /contribute
+#                upload : /upload
+#                remove : /removedoc
+#invst:
+#  cache:
+#    put:
+#      url: ${INVST_CACHE:http://cache-svc.biz-common-dev.svc.cluster.local:8080/cache/##CACHE_NAME##/put-val}
+#    get:
+#      url: ${INVST_CACHE:http://cache-svc.biz-common-dev.svc.cluster.local:8080/cache/##CACHE_NAME##/##KEY##}
+#    name: investments-cache
+#doc:
+#    store:
+#        base:
+#            url: ${DOCSTORE:http://docstore-service.biz-common-dev.svc.cluster.local:8080}
+#        service:
+#            path: /app/doc-store/api/v1
+#            download: /download
+#
+#aes-encryption:
+#  web-filter:
+#    disabled: true
+#web-filter:
+#  jwtvalidator:
+#    disabled: true
