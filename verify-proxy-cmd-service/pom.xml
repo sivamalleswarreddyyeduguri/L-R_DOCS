@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.ubi.dbp.proxy</groupId>
+	<artifactId>verify-proxy-cmd-service</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>17</java.version>
+		<compiler-plugin.version>3.11.0</compiler-plugin.version>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
+		<maven.compiler.release>17</maven.compiler.release>
+		<maven-source-plugin.version>3.3.0</maven-source-plugin.version>
+		<compiler.fork>true</compiler.fork>
+		<surefire-plugin.version>3.0.0-M7</surefire-plugin.version>
+	</properties>
+
+
+	<modules>
+		<module>verify-proxy-cmd-service-model</module>
+		<module>verify-proxy-cmd-service-application</module>
+	</modules>
+	
+    <dependencyManagement>
+        <dependencies>
+		<dependency>
+				<groupId>dbp.framework</groupId>
+				<artifactId>parent-bom</artifactId>
+				<version>${project.version}</version>
+				<type>pom</type>
+                <scope>import</scope>
+            </dependency>
+		    <dependency>
+				<groupId>dbp.framework</groupId>
+				<artifactId>dbp-spring-bom</artifactId>
+				<version>${project.version}</version>
+				<type>pom</type>
+                <scope>import</scope>
+            </dependency>
+         </dependencies>
+    </dependencyManagement>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+	</dependencies>
+	<repositories>
+		<repository>
+			<id>nexus-snapshot</id>
+			<name>nexus-snapshot</name>
+			<url>http://172.29.32.15:8081/repository/maven-snapshots/</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+		</repository>
+	</repositories>
+
+	<distributionManagement>
+		<repository>
+			<id>nexus-releases</id>
+			<name>Releases</name>
+			<url>http://172.29.32.15:8081/repository/maven-releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>nexus-snapshot</id>
+			<url>http://172.29.32.15:8081/repository/maven-snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>3.1.4</version>
+			</plugin>
+
+		</plugins>
+	</build>
+</project>
