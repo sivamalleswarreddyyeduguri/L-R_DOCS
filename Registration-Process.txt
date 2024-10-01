@@ -1,0 +1,79 @@
+Registration Process
+------------------------------->
+1. Prerequisites for Registration
+Bank Account: The user must have a Union Bank of India (UBI) current account.
+Mobile Number: The mobile number linked to the bank account must be active and available.
+Smartphone: The user needs a smartphone with internet access to download and use the app.
+2. Download and Install the App
+App Store/Play Store: The user downloads the UBI Business Banking app from the Google Play Store or Apple App Store.
+Install: The user installs the app on their smartphone.
+3. Launch the App
+Open the App: The user opens the app on their smartphone.
+Splash Screen: A splash screen appears with the bank's logo and a brief introduction.
+4. Security Checks
+The app performs security checks to ensure the device is not rooted, doesn't have screen recording apps, and the network is secure.
+If any security checks fail, the app will display an error message and may close.
+5. Language Selection
+The user selects their preferred language for the app interface.
+6. Permissions
+Notifications: The app requests permission to send notifications.
+Location: The app requests access to the device's location.
+SMS: The app requests permission to read SMS for OTP (One-Time Password) verification.
+The user must grant these permissions to proceed.
+7. Terms and Conditions
+The user reads and accepts the terms and conditions presented by the app.
+8. Network Connection Check
+The app verifies if the user is on a secure network. If not, an error message is displayed.
+9. SIM Verification
+Single SIM: If the device has a single SIM, the app proceeds with that SIM.
+Multiple SIMs: If the device has multiple SIMs, the user selects which SIM to use.
+The app sends a silent SMS to verify the mobile number linked to the bank account.
+10. Fetching Customer Information
+After successful SIM verification, the app fetches the Customer ID (CIF) linked to the mobile number from the bank's database.
+If no CIF is found or if there are issues with the account, appropriate error messages are displayed.
+11. Multi-Factor Authentication (MFA)
+Choose Validation Method:
+Debit Card Validation: The user can choose to validate using their debit card details.
+Aadhaar Validation: The user can choose to validate using their Aadhaar number.
+Debit Card Validation Steps:
+Enter the debit card number.
+Enter the card's expiry date.
+Enter the ATM PIN.
+Aadhaar Validation Steps:
+Enter the Aadhaar number.
+Enter the OTP sent to the registered mobile number.
+12. Setting Up Login Credentials
+Once MFA is successful, the user is prompted to set up their login credentials:
+User ID: Create a unique User ID.
+Password: Create a secure password.
+Example Scenario
+Let's walk through an example scenario where John Doe is registering for the UBI Business Banking app.
+
+Prerequisites: John has a UBI current account and his mobile number is linked to the account.
+Download and Install: John downloads and installs the UBI Business Banking app from the Google Play Store.
+Launch the App: John opens the app and sees the splash screen.
+Security Checks: The app checks John's device for security compliance and proceeds as it passes all checks.
+Language Selection: John selects English as his preferred language.
+Permissions: John grants the app permissions for notifications, location, and SMS.
+Terms and Conditions: John reads and accepts the terms and conditions.
+Network Connection Check: John is on a secure network, so he proceeds.
+SIM Verification: John's device has a single SIM. The app sends a silent SMS and verifies the mobile number.
+Fetching Customer Information: The app fetches John's CIF linked to his mobile number.
+Multi-Factor Authentication:
+John chooses Debit Card Validation.
+He enters his debit card number, expiry date, and ATM PIN.
+Setting Up Login Credentials:
+John creates a User ID: john.doe
+He creates a secure password.
+John's registration is now complete, and he can log in to the UBI Business Banking app using his new credentials.
+
+Entity CIF: For businesses, corporations, and other legal entities.
+Retail CIF: For individual customers or personal banking clients.
+
+Summary:
+------------------>
+The registration process involves downloading the app, performing security checks, granting permissions, accepting terms, verifying the user's mobile number, fetching customer information, performing multi-factor authentication, and finally setting up login credentials. This ensures that the user is securely registered and can access their banking services through the app.
+
+
+
+

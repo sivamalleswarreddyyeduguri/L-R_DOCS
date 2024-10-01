@@ -1,0 +1,62 @@
+@startuml
+actor Client
+
+participant "API Gateway" as api_gateway
+participant "KVP BFF Service" as kvp_bff
+participant "KVP Query Service" as kvp_query
+participant "KVP Command Service" as kvp_command
+participant "Proxy Service" as proxy_service
+participant "GBM" as gbm
+participant "CBS" as cbs
+
+Client -> api_gateway: Request
+api_gateway -> kvp_bff: Redirect to KVP BFF
+
+' Open KVP Account
+kvp_bff -> kvp_command: openKVP
+kvp_command -> proxy_service: openKVP
+proxy_service -> gbm: openKVP
+gbm --> proxy_service: Response
+proxy_service --> kvp_command: Response
+kvp_command --> kvp_bff: Response
+
+' Get KVP Details
+kvp_bff -> kvp_query: getKVPDetails
+kvp_query -> proxy_service: getKVPDetails
+proxy_service -> gbm: getKVPDetails
+gbm --> proxy_service: Response
+proxy_service --> kvp_query: Response
+kvp_query --> kvp_bff: Response
+
+' Get KVP Certificate
+kvp_bff -> kvp_query: getKVPCertificate
+kvp_query -> proxy_service: getKVPCertificate
+proxy_service -> gbm: getKVPCertificate
+gbm --> proxy_service: Response
+proxy_service --> kvp_query: Response
+kvp_query --> kvp_bff: Response
+
+' Get Customer Information
+kvp_bff -> kvp_query: getCustomerInfoBycif
+kvp_query -> proxy_service: getCustomerInfoBycif
+proxy_service -> cbs: getCustomerInfoBycif
+cbs --> proxy_service: Response
+proxy_service --> kvp_query: Response
+kvp_query --> kvp_bff: Response
+
+' Get Account Details
+kvp_bff -> kvp_query: getAccountDetails
+kvp_query -> proxy_service: getAccountDetails
+proxy_service -> cbs: getAccountDetails
+cbs --> proxy_service: Response
+proxy_service --> kvp_query: Response
+kvp_query --> kvp_bff: Response
+
+' Get Account Balance
+kvp_bff -> kvp_query: getAccountbalance
+kvp_query -> proxy_service: getAccountbalance
+proxy_service -> cbs: getAccountbalance
+cbs --> proxy_service: Response
+proxy_service --> kvp_query: Response
+kvp_query --> kvp_bff: Response
+@enduml

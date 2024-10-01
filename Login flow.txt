@@ -1,0 +1,45 @@
+Login flow:
+
+
+{
+  "cif": "12345678",
+  "loginpin": "1234",
+  "confirmloginpin": "1234",
+  "loginpinhistorycount": 3,
+  "loginpinlength": 4,
+  "event": "registration"
+}
+	
+					POST/app/login-registration/api/v1/setPin
+ (user) Login-Pin ----> corporate-App ----> Bff-Service ----> CMD-Service -----> IBM-Verify(store L-Pin)
+				resp		resp			resp
+                         <---------------  <----------------------- <-----------------------------
+
+
+
+
+ 
+
+
+POST /api/v1/user/setPassword
+Content-Type: application/json
+
+{
+  "cif": "12345678",
+  "password": "Passw0rd",
+  "confirmpassword": "Passw0rd",
+  "passwordpolicy": {
+    "minLength": 8,
+    "maxLength": 20,
+    "specialCharRequired": true,
+    "uppercaseRequired": true,
+    "digitRequired": true
+  }
+}
+
+					POST/app/login-registration/api/v1/setPassword
+(user) Password ----> corporate-App ----> Bff-Service ----> CMD-Service -----> IBM-Verify(store password)
+				resp		resp			resp
+                         <---------------  <----------------------- <-----------------------------
+
+

@@ -1,0 +1,54 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+AddElementTag("v1.0", $borderColor="skyblue")
+AddElementTag("v1.1", $fontColor="skyblue")
+AddElementTag("dbpcomp", $fontColor="orange")
+AddElementTag("extsys", $bgColor ="#777777")
+AddElementTag("intsys", $bgColor ="#444444")
+AddElementTag("dbpsvc", $bgColor ="#040404")
+
+AddRelTag("backup", $textColor="orange", $lineColor="orange", $lineStyle = DashedLine())
+
+Person(retailuser, "Retail Customer", "Retail mobile app customers")
+Person(branchuser, "Branch Users", "Branch user using assisted portal", $tags="v1.1")
+Container(retailapp, "Retail App", "reactnative", "The Vyom 2.0 Mobile App", $tags="v1.0")
+Container(assistedportal, "Assisted Web App", "reactjs", "The branch user interface", $tags="v1.0")
+Container(gbm, "GBM", "Ext System", "The GBM Ultra services", $tags="extsys")
+Container(cbs, "CBS", "Core System", "The CBS APIs", $tags="intsys")
+Container(api, "DBP Backend Services", "java springboot", "Handles all business logic", $tags="v1.0+v1.1")
+ContainerDb(db, "Database", "Cassandra", "Holds KVP information")
+Container(cache, "Cache", "DataGrid Cache Service", "Stores KVP stats data", $tags="dbpcomp+dbpsvc")
+Container(email, "Email Svc", "Email Service", "Sends the email regarding KVP account", $tags="dbpcomp+dbpsvc")
+Container(SMS, "SMS Svc", "SMS Service", "Sends the sms regarding KVP account", $tags="dbpcomp+dbpsvc")
+Container(CMS, "CMS CSvc", "CMS Service", "Content Management Service", $tags="intsys")
+Container(cbs_proxy, "CBS Proxy", "CBS Proxy", "Proxy for CBS", $tags="intsys")
+Container(gbm_proxy, "GBM Proxy", "GBM Proxy", "Proxy for GBM", $tags="extsys")
+
+Rel(retailuser, retailapp, "Uses", "https")
+Rel(branchuser, assistedportal, "Uses", "https")
+Rel(retailapp, api, "Uses", "https")
+Rel(assistedportal, api, "Uses", "https")
+Rel(api, CMS, "CMS calls", "https-XML  ISO ")
+Rel(CMS, cbs_proxy, "Calls", "https-XML  ISO ")
+Rel(cbs_proxy, cbs, "Calls", "https-XML  ISO ")
+Rel(api, gbm_proxy, "GBM calls", "https-SOAP")
+Rel(gbm_proxy, gbm, "Calls", "https-SOAP")
+
+Rel_L(api, cache, "Reads/Writes")
+Rel_L(api, email, "Send Email")
+Rel_L(api, SMS, "Send SMS")
+Rel_R(api, db, "Reads/Writes")
+
+WithoutPropertyHeader()
+AddProperty("Get Customer information", "getCustomerInfoBycif")
+AddProperty("Get customer account details", "getAccountDetails")
+AddProperty("Get account balance", "getAccountbalance")
+
+WithoutPropertyHeader()
+AddProperty("Get KVP Details", "getKVPDetails")
+AddProperty("Open KVP", "OpenKVP")
+AddProperty("KVP Certificate", "getKVPCertificate")
+
+SHOW_LEGEND()
+@enduml

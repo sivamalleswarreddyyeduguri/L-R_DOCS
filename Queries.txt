@@ -1,0 +1,54 @@
+Queries
+
+1. of sim-binding frontend or backend (DeviceId, SimId, MobileNumber)
+  
+3. ATM PIN (4-digit numeric input - Validate from ATM switch)
+
+4. System to validate if the debit card number is linked to the fetched account number & CIF associated with the account number.
+
+5. where we need to verify does the customer have current account or not (queryService/cmdService)
+
+6. DB tables recording login and registration
+
+7. Existing user will be verified in IBM-Verify-service    
+
+    	cif id
+	user name
+	mobile
+	email
+
+8. VID, UID
+
+9. transRefNum
+
+10. communicationId
+
+11. User OTP -----------> SMS
+
+12. 
+
+Login:
+
+ 1. After registration is successfull in next page when user enters his login-pin and upon clicking confirm button, will call directly goes from front-end to IBM-Verify?
+  
+2. login-pin and confirm-login-pin validation should be done in IBM-Verify or in our application?
+
+3. for tpin OTP will be generated from IBM Verify?
+
+4. 
+
+
+
+Fetch Account Details:
+
+Retrieve the account details using the account number. querying a database or calling an external API provided by the bank.
+Retrieve CIF:
+
+From the account details, extract the CIF associated with the account. The CIF is a unique identifier for a customer in the bank's records.
+Fetch Debit Card Details:
+
+Retrieve the debit card details using the debit card number. querying a database or an external API.
+Validate Links:
+
+Validate that the account number linked to the debit card matches the fetched account number.
+Validate that the CIF linked to the debit card matches the CIF associated with the fetched account number.
