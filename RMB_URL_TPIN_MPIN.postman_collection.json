@@ -1,0 +1,333 @@
+{
+	"info": {
+		"_postman_id": "7a165c10-b448-4513-9333-9008ee39e084",
+		"name": "RMB URL's",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34135015",
+		"_collection_link": "https://red-water-744771.postman.co/workspace/5080db1b-82a0-4bbc-b0f2-6a4ba512a347/collection/34135015-7a165c10-b448-4513-9333-9008ee39e084?action=share&source=collection_link&creator=34135015"
+	},
+	"item": [
+		{
+			"name": "generate otp for tpin",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "dbp-id",
+						"value": "018d83a55a507e6a978008b03ca1485d",
+						"type": "text"
+					},
+					{
+						"key": "dbp-secret",
+						"value": "018d84783a537d2d9a85d9342ca769d7",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"cif\": \"57913116\",\r\n  \"mail\": \"\",\r\n  \"mobile\":\"8639054306\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://rmb.unionbankofindia.co.in/mpgw/app/login-registration/api/v1/generatetpinotp",
+					"protocol": "https",
+					"host": [
+						"rmb",
+						"unionbankofindia",
+						"co",
+						"in"
+					],
+					"path": [
+						"mpgw",
+						"app",
+						"login-registration",
+						"api",
+						"v1",
+						"generatetpinotp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "verify tpin otp",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "dbp-id",
+						"value": "018d83a55a507e6a978008b03ca1485d",
+						"type": "text"
+					},
+					{
+						"key": "dbp-secret",
+						"value": "018d84783a537d2d9a85d9342ca769d7",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"cif\": \"57913116\",\r\n  \"otp\": \"840964\",\r\n  \"otphint\": \"3264\",\r\n  \"id\": \"HOHmAmWZXele3t309Oql5YOXXaSHQrrmqLpHAmbw4dyBx7Hl5SKu5HHiZHQO1CNGLCxHEq22rvQFYioTHUvnTewdvwgyQvDPsWSQZgDZhLMCUluUsyFSQyVCEiZJ3QPI\",\r\n  \"allowedfailure\": \"3\",\r\n  \"blockinghours\": \"2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://rmb.unionbankofindia.co.in/mpgw/app/login-registration/api/v1/verifytpinotp",
+					"protocol": "https",
+					"host": [
+						"rmb",
+						"unionbankofindia",
+						"co",
+						"in"
+					],
+					"path": [
+						"mpgw",
+						"app",
+						"login-registration",
+						"api",
+						"v1",
+						"verifytpinotp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "mpin",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "dbp-id",
+						"value": "018d83a55a507e6a978008b03ca1485d",
+						"type": "text"
+					},
+					{
+						"key": "dbp-secret",
+						"value": "018d84783a537d2d9a85d9342ca769d7",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"cif\": \"57913116\",\r\n  \"loginpin\": \"9070\",\r\n  \"confirmloginpin\": \"9070\",\r\n  \"loginhistorycount\": 4,\r\n  \"loginpinlength\": 4,\r\n  \"event\": \"registration\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://rmb.unionbankofindia.co.in/mpgw/app/login-registration/api/v1/mpin",
+					"protocol": "https",
+					"host": [
+						"rmb",
+						"unionbankofindia",
+						"co",
+						"in"
+					],
+					"path": [
+						"mpgw",
+						"app",
+						"login-registration",
+						"api",
+						"v1",
+						"mpin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "forget mpin",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "dbp-id",
+						"value": "018d83a55a507e6a978008b03ca1485d",
+						"type": "text"
+					},
+					{
+						"key": "dbp-secret",
+						"value": "018d84783a537d2d9a85d9342ca769d7",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"cif\": \"57913116\",\r\n  \"loginpin\": \"9074\",\r\n  \"confirmloginpin\": \"9074\",\r\n  \"loginhistorycount\": 4,\r\n  \"loginpinlength\": 4,\r\n  \"event\": \"forgetloginpin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://rmb.unionbankofindia.co.in/mpgw/app/login-registration/api/v1/mpin",
+					"protocol": "https",
+					"host": [
+						"rmb",
+						"unionbankofindia",
+						"co",
+						"in"
+					],
+					"path": [
+						"mpgw",
+						"app",
+						"login-registration",
+						"api",
+						"v1",
+						"mpin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "expired mpin",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "dbp-id",
+						"value": "018d83a55a507e6a978008b03ca1485d",
+						"type": "text"
+					},
+					{
+						"key": "dbp-secret",
+						"value": "018d84783a537d2d9a85d9342ca769d7",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"cif\": \"57913116\",\r\n  \"loginpin\": \"9072\",\r\n  \"confirmloginpin\": \"9072\",\r\n  \"loginhistorycount\": 4,\r\n  \"loginpinlength\": 4,\r\n  \"event\": \"expiredloginpin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://rmb.unionbankofindia.co.in/mpgw/app/login-registration/api/v1/mpin",
+					"protocol": "https",
+					"host": [
+						"rmb",
+						"unionbankofindia",
+						"co",
+						"in"
+					],
+					"path": [
+						"mpgw",
+						"app",
+						"login-registration",
+						"api",
+						"v1",
+						"mpin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "tpin",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "dbp-id",
+						"value": "018d83a55a507e6a978008b03ca1485d",
+						"type": "text"
+					},
+					{
+						"key": "dbp-secret",
+						"value": "018d84783a537d2d9a85d9342ca769d7",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"cif\": \"57913116\",\r\n  \"tpin\": \"6060\",\r\n  \"confirmtpin\": \"6060\",\r\n  \"tpinhistorycount\": 4,\r\n  \"tpinlength\": 4,\r\n  \"event\": \"registration\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://rmb.unionbankofindia.co.in/mpgw/app/login-registration/api/v1/tpin",
+					"protocol": "https",
+					"host": [
+						"rmb",
+						"unionbankofindia",
+						"co",
+						"in"
+					],
+					"path": [
+						"mpgw",
+						"app",
+						"login-registration",
+						"api",
+						"v1",
+						"tpin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "t and c",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "dbp-id",
+						"value": "018d83a55a507e6a978008b03ca1485d",
+						"type": "text"
+					},
+					{
+						"key": "dbp-secret",
+						"value": "018d84783a537d2d9a85d9342ca769d7",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n    \"cif\":\"123456\",\r\n    \"tandCType\":\"loginregistration\"\r\n} ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://rmb.unionbankofindia.co.in/mpgw/app/login-registration/api/v1/terms-conditions",
+					"protocol": "https",
+					"host": [
+						"rmb",
+						"unionbankofindia",
+						"co",
+						"in"
+					],
+					"path": [
+						"mpgw",
+						"app",
+						"login-registration",
+						"api",
+						"v1",
+						"terms-conditions"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
