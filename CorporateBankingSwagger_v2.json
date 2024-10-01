@@ -1,0 +1,332 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "IBM Security Verify Access API for Corporate Banking",
+    "version": "1.0.0"
+  },
+  "host": "iamlab.apps.nprd.ubidp.local",
+  "basePath": "/mga/sps/apiauthsvc/policy",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/cbregisteration": {
+      "post": {
+        "summary": "Corporate Banking Customer Registeration for Mobile Banking",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "properties": {
+                "corpID": {
+                  "type": "string",
+                  "example": "adani"
+                },
+                "mobile": {
+                  "type": "string",
+                  "example": 9245363534
+                },
+                "cif": {
+                  "type": "string",
+                  "example": "cif1|cif2|cif3"
+                },
+                "entityID": {
+                  "type": "string",
+                  "example": 12115
+                },
+                "PrimaryId": {
+                  "type": "string",
+                  "example": "adanin9853456787"
+                }
+              },
+              "required": [
+                "corpID",
+                "mobile",
+                "cif",
+                "entityID",
+                "PrimaryID"
+              ]
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Perfect! Your Corporate ID Registeration is Successful."
+                    }
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 201
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error_code": {
+                  "type": "string",
+                  "example": "custom error code"
+                },
+                "errordesc": {
+                  "type": "string",
+                  "example": "custom error message"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error_code": {
+                  "type": "string",
+                  "example": "E01"
+                },
+                "errordesc": {
+                  "type": "string",
+                  "example": "Error Ocurred"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/checkcbregistrationwithdeviceid": {
+      "post": {
+        "summary": "Corporate Banking Check registration with Device ID",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input",
+            "required": true,
+            "schema": {
+              "properties": {
+                "deviceid": {
+                  "type": "string",
+                  "example": 49015420323751
+                },
+                "simdata": {
+                  "type": "string",
+                  "example": "12115|2|3"
+                }
+              },
+              "required": [
+                "deviceid",
+                "simdata"
+              ]
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "mobile": {
+                      "type": "string",
+                      "example": 9876543210
+                    }
+                  }
+                },
+                "respcode": {
+                  "type": "string",
+                  "example": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error_code": {
+                  "type": "string",
+                  "example": "custom error code"
+                },
+                "errordesc": {
+                  "type": "string",
+                  "example": "custom error message"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error_code": {
+                  "type": "string",
+                  "example": "E01"
+                },
+                "errordesc": {
+                  "type": "string",
+                  "example": "Error Ocurred"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "corpmbregisteration": {
+      "properties": {
+        "corpID": {
+          "type": "string",
+          "example": "adani"
+        },
+        "mobile": {
+          "type": "string",
+          "example": 9245363534
+        },
+        "cif": {
+          "type": "string",
+          "example": "cif1|cif2|cif3"
+        },
+        "entityID": {
+          "type": "string",
+          "example": 12115
+        },
+        "PrimaryId": {
+          "type": "string",
+          "example": "adanin9853456787"
+        }
+      },
+      "required": [
+        "corpID",
+        "mobile",
+        "cif",
+        "entityID",
+        "PrimaryID"
+      ]
+    },
+    "checkcbregistrationwithdeviceid": {
+      "properties": {
+        "deviceid": {
+          "type": "string",
+          "example": 49015420323751
+        },
+        "simdata": {
+          "type": "string",
+          "example": "12115|2|3"
+        }
+      },
+      "required": [
+        "deviceid",
+        "simdata"
+      ]
+    }
+  },
+  "components": {
+    "Error": {
+      "Bad": {
+        "type": "object",
+        "properties": {
+          "error_code": {
+            "type": "string",
+            "example": "custom error code"
+          },
+          "errordesc": {
+            "type": "string",
+            "example": "custom error message"
+          }
+        }
+      },
+      "Internal": {
+        "type": "object",
+        "properties": {
+          "error_code": {
+            "type": "string",
+            "example": "E01"
+          },
+          "errordesc": {
+            "type": "string",
+            "example": "Error Ocurred"
+          }
+        }
+      },
+      "Unauthorized": {
+        "type": "object",
+        "properties": {
+          "error_code": {
+            "type": "string",
+            "example": "custom error code"
+          },
+          "errordesc": {
+            "type": "string",
+            "example": "custom error message"
+          }
+        }
+      },
+      "Forbidden": {
+        "type": "object",
+        "properties": {
+          "error_code": {
+            "type": "string",
+            "example": "custom error code"
+          },
+          "errordesc": {
+            "type": "string",
+            "example": "custom error message"
+          }
+        }
+      },
+      "Not Found": {
+        "type": "object",
+        "properties": {
+          "error_code": {
+            "type": "string",
+            "example": "custom error code"
+          },
+          "errordesc": {
+            "type": "string",
+            "example": "custom error message"
+          }
+        }
+      },
+      "Conflict": {
+        "type": "object",
+        "properties": {
+          "error_code": {
+            "type": "string",
+            "example": "custom error code"
+          },
+          "errordesc": {
+            "type": "string",
+            "example": "custom error message"
+          }
+        }
+      }
+    }
+  }
+}

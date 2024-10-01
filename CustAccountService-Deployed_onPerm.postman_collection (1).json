@@ -1,0 +1,341 @@
+{
+	"info": {
+		"_postman_id": "2929a9be-0a83-4297-8143-ca2bb90628fb",
+		"name": "CustAccountService-Deployed_onPerm",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6334480"
+	},
+	"item": [
+		{
+			"name": "getAccountBalance",
+			"request": {
+				"method": "POST",
+				"header": [],				976581
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cif\": \"04989529\",\r\n    \"acctNum\": \"117931100003703\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://cust-acct-qry-svc-biz-customer-dev.apps.nprd.ubidp.local/customer/casa/api/v1/getAccountBalance",
+					"protocol": "https",
+					"host": [
+						"cust-acct-qry-svc-biz-customer-dev",
+						"apps",
+						"nprd",
+						"ubidp",
+						"local"
+					],
+					"path": [
+						"customer",
+						"casa",
+						"api",
+						"v1",
+						"getAccountBalance"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCustomerAccounts",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cif\":\"04989529\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://cust-acct-qry-svc-biz-customer-dev.apps.nprd.ubidp.local/customer/accounts/api/v1/getCustomerAccounts",
+					"protocol": "https",
+					"host": [
+						"cust-acct-qry-svc-biz-customer-dev",
+						"apps",
+						"nprd",
+						"ubidp",
+						"local"
+					],
+					"path": [
+						"customer",
+						"accounts",
+						"api",
+						"v1",
+						"getCustomerAccounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCASAAccountDetails",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cif\": \"35381304\",\r\n        \"acctNum\": \"000110100028508\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://cust-acct-query-service-biz-customer-uat.apps.nprd.ubidp.local/customer/casa/api/v1/getCASAAccountDetails",
+					"protocol": "https",
+					"host": [
+						"cust-acct-query-service-biz-customer-uat",
+						"apps",
+						"nprd",
+						"ubidp",
+						"local"
+					],
+					"path": [
+						"customer",
+						"casa",
+						"api",
+						"v1",
+						"getCASAAccountDetails"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCustomerByCIF",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://cust-acct-qry-svc-biz-customer-sit.apps.nprd.ubidp.local/customer/api/v1/getCustomerByCIF/264289857",
+					"protocol": "https",
+					"host": [
+						"cust-acct-qry-svc-biz-customer-sit",
+						"apps",
+						"nprd",
+						"ubidp",
+						"local"
+					],
+					"path": [
+						"customer",
+						"api",
+						"v1",
+						"getCustomerByCIF",
+						"264289857"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCustomerByMob",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://cust-acct-query-service-biz-customer-uat.apps.nprd.ubidp.local/customer/api/v1/custInqByMob/9082920587",
+					"protocol": "https",
+					"host": [
+						"cust-acct-query-service-biz-customer-uat",
+						"apps",
+						"nprd",
+						"ubidp",
+						"local"
+					],
+					"path": [
+						"customer",
+						"api",
+						"v1",
+						"custInqByMob",
+						"9082920587"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCASAAccounts",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cif\": \"04989529\",\r\n    \"acctNum\": \"134210012000160\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://cust-acct-qry-svc-biz-customer-dev.apps.nprd.ubidp.local/customer/casa/api/v1/getCASAAccounts",
+					"protocol": "https",
+					"host": [
+						"cust-acct-qry-svc-biz-customer-dev",
+						"apps",
+						"nprd",
+						"ubidp",
+						"local"
+					],
+					"path": [
+						"customer",
+						"casa",
+						"api",
+						"v1",
+						"getCASAAccounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCASAAccountsByCifAndAcctNum",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cif\": \"214827460\",\r\n    \"acctNum\": \"67867868768\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://cust-acct-qry-svc-biz-customer-dev.apps.nprd.ubidp.local/customer/casa/api/v1/getCASAAccountsByCifAndAcctNum",
+					"protocol": "https",
+					"host": [
+						"cust-acct-qry-svc-biz-customer-dev",
+						"apps",
+						"nprd",
+						"ubidp",
+						"local"
+					],
+					"path": [
+						"customer",
+						"casa",
+						"api",
+						"v1",
+						"getCASAAccountsByCifAndAcctNum"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getTDDetails",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cif\": \"214673801\",\r\n    \"acctNum\": \"315103041000237\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://cust-acct-qry-svc-biz-customer-dev.apps.nprd.ubidp.local/customer/deposits/api/v1/getTDDetails",
+					"protocol": "https",
+					"host": [
+						"cust-acct-qry-svc-biz-customer-dev",
+						"apps",
+						"nprd",
+						"ubidp",
+						"local"
+					],
+					"path": [
+						"customer",
+						"deposits",
+						"api",
+						"v1",
+						"getTDDetails"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getTDDetails Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cif\": \"214673801\",\r\n    \"acctNum\": \"315103041000237\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://cbs-acct-qry-svc-proxy-cbs-dev.apps.nprd.ubidp.local/proxy/v1/cbs/acctdetail/deposit",
+					"protocol": "https",
+					"host": [
+						"cbs-acct-qry-svc-proxy-cbs-dev",
+						"apps",
+						"nprd",
+						"ubidp",
+						"local"
+					],
+					"path": [
+						"proxy",
+						"v1",
+						"cbs",
+						"acctdetail",
+						"deposit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCustKycStatus",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"cif\": \"04989529\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://cust-acct-qry-svc-biz-customer-dev.apps.nprd.ubidp.local/customer/api/v1/getCustKycStatus",
+					"protocol": "https",
+					"host": [
+						"cust-acct-qry-svc-biz-customer-dev",
+						"apps",
+						"nprd",
+						"ubidp",
+						"local"
+					],
+					"path": [
+						"customer",
+						"api",
+						"v1",
+						"getCustKycStatus"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
